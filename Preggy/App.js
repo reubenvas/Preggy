@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import preggyService from './services/preggyService';
 
+import DatePicker from './components/DatePicker';
+
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -18,8 +20,9 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <DatePicker />
         <Text>{this.state.title}</Text>
-        <Text>{this.state.content}</Text>
+        {/* <Text>{this.state.content}</Text> */}
       </View>
     );
   }
