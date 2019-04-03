@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha **/*test.js --reporter spec",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "lint": "eslint *.js --fix"
   },
   "author": "CodeBlooded",
   "license": "ISC",
@@ -15,6 +16,9 @@
     "mongodb": "^3.2.2"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
   }
 }

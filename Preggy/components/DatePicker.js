@@ -44,7 +44,10 @@ export default class MyDatePicker extends Component {
           }
           // ... You can check the source to find the other keys.
         }}
-        onDateChange={(date) => {this.setState({date: date})}}
+        onDateChange={(date) => {
+          this.setState({date: date})
+          console.log(date)
+          }} 
       />
     )
   }
