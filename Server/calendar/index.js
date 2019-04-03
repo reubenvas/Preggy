@@ -5,25 +5,22 @@ function calculateDueDate(date) {
 }
 
 function calculateWeek(dueDate) {
-    const today = new Date();
-    const dateDiff = (dueDate - today) / 86400000;
-    const daysRemaining = Math.floor(dateDiff);
-    const daysPassed = 280 - daysRemaining;
-    const weeksPassed = Math.ceil(daysPassed/7);
-
+    const weeksPassed = Math.ceil( getDaysPassed(dueDate) / 7);
     return weeksPassed;
 }
 
 function calculateAdditionalDays(dueDate){
+    const daysPassed = getDaysPassed(dueDate);
+    const weeksPassed = Math.floor(daysPassed/7);
+    const remainder = (daysPassed % 7) - 1;
+    return `${weeksPassed} + ${remainder}`;
+}
+
+function getDaysPassed(dueDate) {
     const today = new Date();
     const dateDiff = (dueDate - today) / 86400000;
     const daysRemaining = Math.ceil(dateDiff);
-    const daysPassed = 280 - daysRemaining;
-    const weeksPassed = Math.floor(daysPassed/7);
-    const remainder = (daysPassed % 7) - 1;
-
-    return `${weeksPassed} + ${remainder}`;
-    //return '15 + 7';
+    return 280 - daysRemaining;
 }
 
 module.exports = {
