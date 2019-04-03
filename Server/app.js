@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const db = require('./db');
 
-app.get('/api/week', async (req, res) => {
+app.get('/api/week/:num', async (req, res) => {
     try {
-        const r = await db.getWeek(1);
+        console.log(req.params.num)
+        const r = await db.getWeek(parseInt(req.params.num));
         res.send(r);
     } catch(e){
         res.send(e);

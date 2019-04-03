@@ -1,7 +1,7 @@
 import config from '../config';
 
-async function getWeek() {
-    return fetch(config.backendUrl + '/api/week')
+async function getWeek(num) {
+    return fetch(config.backendUrl + `/api/week/${num}`)
     .then(res => res.json())
     .catch(err => console.log(err))
 }

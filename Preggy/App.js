@@ -6,17 +6,19 @@ export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      title: '',
       content: 'data is loading',
     }
   }
   async componentDidMount() {
-    const result = await preggyService.getWeek();
-    this.setState({content: result.content});
+    const result = await preggyService.getWeek(12);
+    this.setState({title: result.title, content: result.content});
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <Text>{this.state.title}</Text>
         <Text>{this.state.content}</Text>
       </View>
     );
