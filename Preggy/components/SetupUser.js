@@ -15,10 +15,20 @@ export default class SetupUser extends React.Component {
     }
 
     render() {
+        if(this.state.dueDate === ''){
+            return (
+                <View>
+                <DatePicker setDates={this.setDates} />                    
+                </View>
+            )
+        }
+
         return (
             <View>
-                <Text>{this.state.timePregnant}</Text>
                 <DatePicker setDates={this.setDates} />
+                <Text> Your due date is {this.state.dueDate}</Text>
+                <Text>You are in Week {this.state.currentWeek}</Text>
+                <Text>( {this.state.timePregnant} )</Text>
             </View>
         );
     }
