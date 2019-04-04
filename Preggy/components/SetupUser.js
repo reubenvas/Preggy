@@ -18,6 +18,7 @@ export default class SetupUser extends React.Component {
         if(this.state.dueDate === ''){
             return (
                 <View>
+                    <Text>Hej</Text>
                 <DatePicker setDates={this.setDates} />                    
                 </View>
             )

@@ -2,36 +2,28 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import preggyService from './services/preggyService';
 import SetupUser from './components/SetupUser';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+
+import Home from './components/Home';
+import LogIn from './components/LogIn';
+
+
+const MainNavigator = createStackNavigator({
+  Home: Home,
+  LogIn: LogIn,
+  },
+  {initialRouteName: 'Home'}
+);
+
+const AppContainer = createAppContainer(MainNavigator);
+
+//export default App;
 
 export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      title: '',
-      content: 'data is loading',
-    }
-  }
-  async componentDidMount() {
-    const result = await preggyService.getWeek(12);
-    this.setState({title: result.title, content: result.content});
-  }
-
   render() {
     return (
-      <View style={styles.container}>
-        <SetupUser />
-        {/* <Text>{this.state.title}</Text>
-        <Text>{this.state.content}</Text> */}
-      </View>
-    );
+      <AppContainer />
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-});
