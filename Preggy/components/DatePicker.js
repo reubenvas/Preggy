@@ -1,22 +1,30 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-native-datepicker'
+import config from '../config'
 import { StyleSheet, Text, View } from 'react-native';
 
 export default class MyDatePicker extends Component {
-    constructor(props){
-        super(props)
-        
-        const date = new Date()
-        const YYYY = date.getFullYear()
-        const MM = formatTwoDigit(date.getMonth() + 1);
-        const DD = formatTwoDigit(date.getDate());
-        function formatTwoDigit(num){
-            if (num < 10){
-                return `0${num}`;
-            }
-            return num;
+  state = { date: this.displayTodaysDate() };
+  displayTodaysDate() {
+    const date = new Date()
+    const YYYY = date.getFullYear()
+    const MM = formatTwoDigit(date.getMonth() + 1);
+    const DD = formatTwoDigit(date.getDate());
+    function formatTwoDigit(num){
+        if (num < 10){
+            return `0${num}`;
         }
-    this.state = {date:`${YYYY}-${MM}-${DD}`};
+        return num;
+    }
+    return `${YYYY}-${MM}-${DD}`;
+  }
+
+  getPregnancyInfo = async (date) => {
+    const data = await fetch(`${config.backendUrl}/api/get_week/period_date/${date}`)
+      .then(res => res.json())
+      .catch(err => console.log(err));
+      
+      return data;
   }
  
   render(){
@@ -44,9 +52,11 @@ export default class MyDatePicker extends Component {
           }
           // ... You can check the source to find the other keys.
         }}
-        onDateChange={(date) => {
-          this.setState({date: date})
-          console.log(date)
+        onDateChange={ async (date) => {
+          this.setState( {date} );
+          const pregnancyInfo = await this.getPregnancyInfo(date);
+          console.log(pregnancyInfo);
+          this.props.setDates(pregnancyInfo);
           }} 
       />
     )

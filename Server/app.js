@@ -19,11 +19,10 @@ app.get('/api/week/:num', async (req, res) => {
 });
 
 app.get('/api/get_week/period_date/:dateString', (req, res) => {
-  console.log(req.params.dateString);
+  const today = new Date();
   const dueDate = calculateDueDate(req.params.dateString);
-  const currentWeek = calculateWeek(dueDate);
-  const timePregnant = calculateAdditionalDays(dueDate);
-  console.log(dueDate);
+  const currentWeek = calculateWeek(today, dueDate);
+  const timePregnant = calculateAdditionalDays(today, dueDate);
   const data = {
     dueDate,
     currentWeek,
