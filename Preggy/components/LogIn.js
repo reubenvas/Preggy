@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
 
 export default class LogIn extends Component {
-    static navigationOptions = {
-        header: null,
-      };
+    // static navigationOptions = {
+    //     header: null,
+    //   };
     constructor(props) {
       super(props)
       this.state = {
@@ -16,7 +16,7 @@ export default class LogIn extends Component {
       const result = await preggyService.getWeek(12);
       this.setState({title: result.title, content: result.content});
     } */
-  
+
     render() {
     const {navigate} = this.props.navigation;
       return (
@@ -29,14 +29,11 @@ export default class LogIn extends Component {
             title="Next"
             onPress={() => navigate('EnterName')}
         />
-          {/* <SetupUser /> */}
-          {/* <Text>{this.state.title}</Text>
-          <Text>{this.state.content}</Text> */}
         </View>
       );
     }
   }
-  
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -45,4 +42,3 @@ export default class LogIn extends Component {
       backgroundColor: '#F5FCFF',
     },
   });
-  

@@ -4,15 +4,22 @@ import preggyService from './services/preggyService';
 import SetupUser from './components/SetupUser';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
-import Home from './components/Home';
+import Welcome from './components/Welcome';
 import LogIn from './components/LogIn';
-
+import EnterName from './components/EnterName';
+import SetupDueDate from './components/SetupDueDate';
+import SetupPeriod from './components/SetupPeriod';
+import Home from './components/Home'
 
 const MainNavigator = createStackNavigator({
-  Home: Home,
-  LogIn: LogIn,
+  Welcome,
+  LogIn,
+  EnterName,
+  SetupDueDate,
+  SetupPeriod,
+  Home,
   },
-  {initialRouteName: 'Home'}
+  {initialRouteName: 'Welcome'}
 );
 
 const AppContainer = createAppContainer(MainNavigator);
