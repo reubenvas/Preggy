@@ -9,7 +9,7 @@ export default class Welcome extends Component {
     const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text>Welcome! Please log in</Text>
+        <Text>Welcome to Preggy!</Text>
         <Button
         title="Log in"
         onPress={() => navigate('LogIn')}

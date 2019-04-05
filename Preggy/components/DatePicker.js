@@ -6,7 +6,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import getDate from '../handlers/getDateAsString';
 
 export default class MyDatePicker extends Component {
-
   state = {
     date: getDate(new Date(Date.now())),
     maxDate: this.props.maxDate,
@@ -15,8 +14,10 @@ export default class MyDatePicker extends Component {
 
   // FIX SO THAT THE USER HAS TO CHOOOOSE A DATE!
 
+  uri = this.props.uri;
+
   getPregnancyInfo = async (date) => {
-    const data = await fetch(`${config.backendUrl}/api/get_week/period_date/${date}`)
+    const data = await fetch(`${config.backendUrl}${this.uri}${date}`)
       .then(res => res.json())
       .catch(err => console.log(err));
 
@@ -51,7 +52,7 @@ export default class MyDatePicker extends Component {
         onDateChange={ async (date) => {
           this.setState( {date} );
           const pregnancyInfo = await this.getPregnancyInfo(date);
-          const formattedDueDate = this.getDate(new Date(pregnancyInfo.dueDate));
+          const formattedDueDate = getDate(new Date(pregnancyInfo.dueDate));
           pregnancyInfo.dueDate = formattedDueDate;
           this.props.setDates(pregnancyInfo);
           }}

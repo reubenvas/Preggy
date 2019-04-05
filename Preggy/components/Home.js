@@ -3,10 +3,13 @@ import { Button, StyleSheet, Text, View, TextInput,  } from 'react-native';
 
 export default class Home extends Component {
   render() {
-
+    const { navigate } = this.props.navigation;
+    const name = this.props.navigation.getParam('name');
+    const currentWeek = this.props.navigation.getParam('currentWeek');
     return (
     <View style={styles.container}>
-    <Text>Welcome back Array Williams</Text>
+    <Text>Hej {name}</Text>
+    <Text>You're in week {currentWeek}</Text>
     </View>
     )
   }
