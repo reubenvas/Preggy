@@ -14,7 +14,7 @@ export default class SetupDueDate extends Component {
     }
 
     minDate = getDate(new Date()); // IDAG
-    maxDate = getDate(new Date(Date.now() + 280 * 86400000)); // IDAG + 280DGR
+    maxDate = getDate(new Date(Date.now() + 279 * 86400000)); // IDAG + 280DGR
 
     setPregDates = (pregnancyInfo) => {
         this.setState({ ...pregnancyInfo })
