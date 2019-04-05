@@ -32,4 +32,19 @@ app.get('/api/get_week/period_date/:dateString', (req, res) => {
   res.send(JSON.stringify(data));
 });
 
+app.get('/api/get_week/due_date/:dateString', (req, res) => {
+  const today = new Date();
+  const dueDate = new Date(req.params.dateString);
+  console.log(dueDate);
+  const currentWeek = calculateWeek(today, dueDate);
+  const timePregnant = calculateAdditionalDays(today, dueDate);
+  const data = {
+    dueDate,
+    currentWeek,
+    timePregnant,
+  };
+
+  res.send(JSON.stringify(data));
+});
+
 module.exports.app = app;
