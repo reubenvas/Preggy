@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Button, Text, View, TextInput } from 'react-native';
+import styles from '../styles';
+
 
 export default class EnterName extends Component {
   state = {
@@ -10,10 +12,10 @@ export default class EnterName extends Component {
     const {navigate} = this.props.navigation;
     return (
         <View style={styles.container}>
-            <Text>Enter your name:</Text>
-            <TextInput placeholder="Sarah" onChange={ (e) => this.setState( {name: e.nativeEvent.text} )}>{this.state.name}</TextInput>
+            <Text style={styles.text}>Ditt namn:</Text>
+            <TextInput style={styles.text} placeholder="Sarah" onChange={ (e) => this.setState( {name: e.nativeEvent.text} )}>{this.state.name}</TextInput>
             <Button
-            title="Next"
+            title="Nästa"
             onPress={() => navigate('SetupDueDate', {
               name: this.state.name
             })}
@@ -23,11 +25,3 @@ export default class EnterName extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-  })

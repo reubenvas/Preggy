@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Button, Text, View } from 'react-native';
+
+import styles from '../styles';
 
 export default class Welcome extends Component {
     static navigationOptions = {
@@ -9,9 +11,9 @@ export default class Welcome extends Component {
     const {navigate} = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text>Welcome to Preggy!</Text>
+        <Text style={styles.heading}>Välkommen till Preggy!</Text>
         <Button
-        title="Log in"
+        title="Logga in"
         onPress={() => navigate('LogIn')}
       />
       </View>
@@ -19,11 +21,3 @@ export default class Welcome extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-  })

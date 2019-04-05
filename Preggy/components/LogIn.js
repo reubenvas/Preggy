@@ -1,44 +1,23 @@
-import React, {Component} from 'react'
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import React, { Component } from 'react'
+import { Button, Text, View, TextInput } from 'react-native';
+import styles from '../styles';
 
 export default class LogIn extends Component {
-    // static navigationOptions = {
-    //     header: null,
-    //   };
-    constructor(props) {
-      super(props)
-      this.state = {
-        title: '',
-        content: 'data is loading',
-      }
-    }
-    /* async componentDidMount() {
-      const result = await preggyService.getWeek(12);
-      this.setState({title: result.title, content: result.content});
-    } */
-
-    render() {
-    const {navigate} = this.props.navigation;
-      return (
-        <View style={styles.container}>
-        <Text>Enter e-mail address:</Text>
-        <TextInput placeholder="john@appleseed.com"></TextInput>
-        <Text>Enter password:</Text>
-        <TextInput placeholder="password"></TextInput>
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>Email:</Text>
+        <TextInput style={styles.text} placeholder="john@appleseed.com"></TextInput>
+        <Text style={styles.text}>Lösenord:</Text>
+        <TextInput style={styles.text} placeholder="Lösenord"></TextInput>
         <Button
-            title="Next"
-            onPress={() => navigate('EnterName')}
+          title="Nästa"
+          onPress={() => navigate('EnterName')}
         />
-        </View>
-      );
-    }
+      </View>
+    );
   }
+}
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-  });
+

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import getDate from '../handlers/getDateAsString';
+import styles from '../styles';
 
 
 import DatePicker from './DatePicker';
@@ -17,25 +18,25 @@ export default class SetupPeriod extends Component {
     }
 
     // CALCULATE FROM PERIOD DATE
-    maxDate = getDate(new Date(new Date() - 86400000)); // IGÅR
-    minDate = getDate(new Date(Date.now() - 280 * 86400000))// IGÅR - 280DGR
+    maxDate = getDate(new Date(new Date() - 86400000)); //IGÅR
+    minDate = getDate(new Date(Date.now() - 280 * 86400000)) //IGÅR - 280DGR
     render() {
-        const { navigate } = this.props.navigation;
         const { navigation } = this.props;
         const name = navigation.getParam('name');
         return (
             <View style={styles.container}>
-                <Text>First day of last period:</Text>
+                <Text style={styles.text}>Första dagen av senaste mensen:</Text>
                 <DatePicker
                     minDate={this.minDate}
                     maxDate={this.maxDate}
                     setDates={this.setPregDates}
                     uri='/api/get_week/period_date/'
                     />
-                <Text>Your due date is: {this.state.dueDate}</Text>
+                <Text style={styles.text} style={styles.topMargin}>Ditt beräknade förlossningsdatum är </Text>
+                <Text>{this.state.dueDate}</Text>
                 <Button
-                    title="Done"
-                    onPress={() => navigate('Home', {
+                    title="Klar"
+                    onPress={() => navigation.navigate('Home', {
                         ...this.state,
                         name: name
                     })} />
@@ -43,12 +44,3 @@ export default class SetupPeriod extends Component {
         )
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-})

@@ -1,25 +1,27 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View, TextInput,  } from 'react-native';
+import { Text, View, Button } from 'react-native';
+import styles from '../styles';
+
 
 export default class Home extends Component {
   render() {
-    const { navigate } = this.props.navigation;
-    const name = this.props.navigation.getParam('name');
-    const currentWeek = this.props.navigation.getParam('currentWeek');
+    const { getParam, navigate } = this.props.navigation;
+
+    const [name, currentWeek, timePregnant, dueDate]
+      = [getParam('name'), getParam('currentWeek'), getParam('timePregnant'), getParam('dueDate')];
+
     return (
-    <View style={styles.container}>
-    <Text>Hej {name}</Text>
-    <Text>You're in week {currentWeek}</Text>
-    </View>
+      <View style={styles.container}>
+        <Text style={styles.heading}>Hej {name}!</Text>
+        <Text style={styles.smallerText}>Du är i vecka {currentWeek} ( {timePregnant} )</Text>
+        <Text style={styles.smallerText}>Ditt beräknade förlossningsdatum är {dueDate}</Text>
+        <Button
+          title="Se vad som händer denna vecka"
+          onPress={() => navigate('WeekInfo', {
+            currentWeek,
+          })}
+        />
+      </View>
     )
   }
 }
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-  })

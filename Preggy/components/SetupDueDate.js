@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import DatePicker from './DatePicker';
-import { Button, StyleSheet, Text, View, TextInput, } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import getDate from '../handlers/getDateAsString';
+import styles from '../styles';
+
 
 
 export default class SetupDueDate extends Component {
@@ -24,8 +26,7 @@ export default class SetupDueDate extends Component {
         const name = navigation.getParam('name');
         return (
             <View style={styles.container}>
-                <Text>My due date is:</Text>
-                <Text>{this.state.currentWeek}</Text>
+                <Text style={styles.text}>Mitt beräknade förlossningsdatum:</Text>
                 <DatePicker
                     minDate={this.minDate}
                     maxDate={this.maxDate}
@@ -33,12 +34,15 @@ export default class SetupDueDate extends Component {
                     uri='/api/get_week/due_date/'
                 />
                 <Text
+                    style={styles.smallerText}
                     onPress={() => navigate('SetupPeriod', {
                         name
                     })}
-                >Help me calculate</Text>
+                >
+                Hjälp mig att beräkna
+                </Text>
                 <Button
-                    title="Done"
+                    title="Klar"
                     onPress={() => navigate('Home', {
                         ...this.state,
                         name
@@ -49,11 +53,3 @@ export default class SetupDueDate extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-})
