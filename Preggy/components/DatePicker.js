@@ -10,7 +10,7 @@ export default class MyDatePicker extends Component {
     minDate: this.props.minDate,
   };
 
-  // FIX SO THAT THE USER HAS TO CHOOOOSE A DATE!
+  // FIX SO THAT THE USER HAS TO CHOOSE A DATE!
 
   uri = this.props.uri;
 
@@ -45,7 +45,6 @@ export default class MyDatePicker extends Component {
           dateInput: {
             marginLeft: 36
           }
-          // ... You can check the source to find the other keys.
         }}
         onDateChange={ async (date) => {
           this.setState( {date} );

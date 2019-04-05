@@ -7,14 +7,15 @@ import styles from '../styles';
 
 
 export default class SetupDueDate extends Component {
-    // CALCULATE FROM DUEDATE
-    minDate = getDate(new Date());                      // IDAG
-    maxDate = getDate(new Date(Date.now() + 280 * 86400000)) // IDAG + 280DGR
     state = {
         dueDate: '',
         currentWeek: '',
         timePregnant: ''
     }
+
+    minDate = getDate(new Date()); // IDAG
+    maxDate = getDate(new Date(Date.now() + 280 * 86400000)); // IDAG + 280DGR
+
     setPregDates = (pregnancyInfo) => {
         this.setState({ ...pregnancyInfo })
     }
@@ -35,9 +36,7 @@ export default class SetupDueDate extends Component {
                 />
                 <Text
                     style={styles.smallerText}
-                    onPress={() => navigate('SetupPeriod', {
-                        name
-                    })}
+                    onPress={() => navigate('SetupPeriod', {name})}
                 >
                 Hjälp mig att beräkna
                 </Text>

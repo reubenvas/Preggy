@@ -22,7 +22,7 @@ client.connect(async (err) => {
   if (err) {
     throw new Error(err);
   }
-  console.log('Connected successfully to server');
+  console.log('DB connected successfully to server');
 
   db = client.db(dbName);
   await db.dropDatabase();

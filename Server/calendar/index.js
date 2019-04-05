@@ -1,4 +1,3 @@
-// const today = new Date();
 
 function calculateDueDate(date) {
   const lastPeriod = new Date(date);

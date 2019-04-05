@@ -13,16 +13,17 @@ export default class SetupPeriod extends Component {
         currentWeek: '',
         timePregnant: ''
     }
+
     setPregDates = (pregnancyInfo) => {
         this.setState({ ...pregnancyInfo })
     }
 
-    // CALCULATE FROM PERIOD DATE
     maxDate = getDate(new Date(new Date() - 86400000)); //IGÅR
     minDate = getDate(new Date(Date.now() - 280 * 86400000)) //IGÅR - 280DGR
+
     render() {
-        const { navigation } = this.props;
-        const name = navigation.getParam('name');
+        const { navigate, getParam } = this.props.navigation;
+        const name = getParam('name');
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Första dagen av senaste mensen:</Text>
@@ -36,9 +37,9 @@ export default class SetupPeriod extends Component {
                 <Text>{this.state.dueDate}</Text>
                 <Button
                     title="Klar"
-                    onPress={() => navigation.navigate('Home', {
+                    onPress={() => navigate('Home', {
                         ...this.state,
-                        name: name
+                        name
                     })} />
             </View>
         )

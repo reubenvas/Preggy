@@ -8,9 +8,16 @@ export default class LogIn extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Email:</Text>
-        <TextInput style={styles.text} placeholder="john@appleseed.com"></TextInput>
+        <TextInput
+          style={styles.text}
+          placeholder="john@appleseed.com"
+        />
         <Text style={styles.text}>Lösenord:</Text>
-        <TextInput style={styles.text} placeholder="Lösenord"></TextInput>
+        <TextInput
+          style={styles.text}
+          placeholder="Lösenord"
+          secureTextEntry={true}
+        />
         <Button
           title="Nästa"
           onPress={() => navigate('EnterName')}

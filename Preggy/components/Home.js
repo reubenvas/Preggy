@@ -7,8 +7,7 @@ export default class Home extends Component {
   render() {
     const { getParam, navigate } = this.props.navigation;
 
-    const [name, currentWeek, timePregnant, dueDate]
-      = [getParam('name'), getParam('currentWeek'), getParam('timePregnant'), getParam('dueDate')];
+    const [name, currentWeek, timePregnant, dueDate] = [getParam('name'), getParam('currentWeek'), getParam('timePregnant'), getParam('dueDate')];
 
     return (
       <View style={styles.container}>
