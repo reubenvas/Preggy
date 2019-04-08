@@ -4,6 +4,10 @@ import config from '../../config'
 import getDate from '../../handlers/getDateAsString';
 
 export default class MyDatePicker extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+  
   state = {
     date: getDate(new Date(Date.now())),
     maxDate: this.props.maxDate,

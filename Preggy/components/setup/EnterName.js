@@ -1,31 +1,46 @@
 import React, { Component } from 'react'
-import { Button, Text, View, TextInput } from 'react-native';
+import { Button, Text, Container, View, Input, Item } from 'native-base';
 import styles from '../../styles';
 
+import MainHeader from '../MainHeader';
 
 export default class EnterName extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   state = {
     name: '',
   }
 
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigation } = this.props;
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Ditt namn:</Text>
-        <TextInput style={styles.text} placeholder="enter here" onChange={(e) => this.setState({ name: e.nativeEvent.text })}>{this.state.name}</TextInput>
-        <Button
-          title="Nästa"
-          onPress={() => {
-            if (this.state.name) {
-              navigate('Relation', {
-                name: this.state.name
-              })
-            }
-          }
-          }
-        />
-      </View>
+      <Container>
+        <MainHeader navigation={navigation} />
+        <Container style={styles.center}>
+          <View style={styles.center} style={styles.card}>
+            <Text style={styles.text}>Ditt namn:</Text>
+            <Item>
+              <Input placeholder="Sara" onChange={(e) => this.setState({ name: e.nativeEvent.text })}>{this.state.name}</Input>
+            </Item>
+            <Button
+              bordered block
+              style={styles.topMargin}
+              onPress={() => {
+                if (this.state.name) {
+                  navigation.navigate('Relation', {
+                    name: this.state.name
+                  })
+                }
+              }
+              }
+            >
+              <Text>Nästa</Text>
+            </Button>
+          </View>
+        </Container>
+      </Container>
     )
   }
 }

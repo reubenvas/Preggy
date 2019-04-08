@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
-
+import { Button, Container, Text, Header, View } from 'native-base';
 import styles from '../../styles';
 
 export default class Welcome extends Component {
-    static navigationOptions = {
-        header: null,
-      };
+  static navigationOptions = {
+    header: null,
+  };
   render() {
-    const {navigate} = this.props.navigation;
+    const { navigation } = this.props;
     return (
-      <View style={styles.container}>
-        <Text style={styles.heading}>Välkommen till Preggy!</Text>
-        <Button
-        title="Logga in"
-        onPress={() => navigate('LogIn')}
-      />
-      </View>
+      <Container style={styles.center}>
+        <View style={styles.center}>
+          <Text style={styles.heading}>Välkommen till Preggy!</Text>
+          <Button bordered block
+            onPress={() => navigation.navigate('LogIn')}
+          >
+            <Text>Logga In</Text>
+          </Button>
+        </View>
+      </Container>
     )
   }
 }

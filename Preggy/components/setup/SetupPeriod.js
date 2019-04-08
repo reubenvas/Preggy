@@ -1,56 +1,85 @@
 import React, { Component } from 'react';
-import { Button, Text, View } from 'react-native';
 import getDate from '../../handlers/getDateAsString';
 import styles from '../../styles';
+import { Button, Text, Container, View } from 'native-base';
 
+import MainHeader from '../MainHeader';
 
 import DatePicker from './DatePicker';
 
 export default class SetupPeriod extends Component {
+  static navigationOptions = {
+    header: null,
+  };
 
-    state = {
-        dueDate: '',
-        currentWeek: '',
-        timePregnant: ''
+  state = {
+    dueDate: '',
+    currentWeek: '',
+    timePregnant: ''
+  }
+
+  setPregDates = (pregnancyInfo) => {
+    this.setState({ ...pregnancyInfo })
+  }
+
+  maxDate = getDate(new Date(new Date() - 86400000)); //IGÅR
+  minDate = getDate(new Date(Date.now() - 280 * 86400000)) //IGÅR - 280DGR
+
+  renderDueDate = () => {
+    if (this.state.dueDate) {
+      return (
+        <React.Fragment>
+          <Text style={{
+            marginTop: 12,
+            fontFamily: 'Roboto-Light',
+            fontSize: 14,
+            paddingVertical: 5
+          }} >Ditt beräknade förlossningsdatum är </Text>
+          <Text style={styles.smallerText} >{this.state.dueDate}</Text>
+        </React.Fragment >
+      )
     }
+  }
 
-    setPregDates = (pregnancyInfo) => {
-        this.setState({ ...pregnancyInfo })
-    }
+  render() {
+    const { navigation } = this.props;
+    const name = navigation.getParam('name');
+    const relation = navigation.getParam('relation');
 
-    maxDate = getDate(new Date(new Date() - 86400000)); //IGÅR
-    minDate = getDate(new Date(Date.now() - 280 * 86400000)) //IGÅR - 280DGR
+    return (
+      <Container>
+        <MainHeader navigation={navigation} />
+        <Container style={styles.center}>
+          <View style={styles.center}>
+            <Text
+              style={{ marginBottom: 20, fontSize: 20, textAlign: 'center', fontFamily: 'NotoSerifTC-Regular' }}
+            >Första dagen av senaste mensen:</Text>
+            <DatePicker
+              minDate={this.minDate}
+              maxDate={this.maxDate}
+              setDates={this.setPregDates}
+              uri='/api/get_week/period_date/'
+            />
+            {this.renderDueDate()}
+            <Button
+              bordered block
+              style={styles.topMargin}
+              onPress={() => {
+                if (this.state.dueDate) {
+                  navigation.navigate('Home', {
+                    ...this.state,
+                    name,
+                    relation
+                  })
+                }
+              }
 
-    render() {
-        const { navigation } = this.props;
-        const name = navigation.getParam('name');
-        const relation = navigation.getParam('relation');
-
-        return (
-            <View style={styles.container}>
-                <Text style={styles.text}>Första dagen av senaste mensen:</Text>
-                <DatePicker
-                    minDate={this.minDate}
-                    maxDate={this.maxDate}
-                    setDates={this.setPregDates}
-                    uri='/api/get_week/period_date/'
-                />
-                <Text style={styles.text} style={styles.topMargin}>Ditt beräknade förlossningsdatum är </Text>
-                <Text>{this.state.dueDate}</Text>
-                <Button
-                    title="Klar"
-                    onPress={() => {
-                        if (this.state.dueDate) {
-                            navigation.navigate('Home', {
-                                ...this.state,
-                                name,
-                                relation
-                            })
-                        }
-                    }
-
-                    } />
-            </View>
-        )
-    }
+              }>
+              <Text>Klar</Text>
+            </Button>
+          </View>
+        </Container>
+      </Container>
+    )
+  }
 }

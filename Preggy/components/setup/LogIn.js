@@ -1,28 +1,39 @@
 import React, { Component } from 'react'
-import { Button, Text, View, TextInput } from 'react-native';
+import { Button, Text, Container, View, Input, Item } from 'native-base';
 import styles from '../../styles';
+import MainHeader from '../MainHeader';
 
 export default class LogIn extends Component {
+  static navigationOptions = {
+    header: null,
+  };
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigation } = this.props;
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Email:</Text>
-        <TextInput
-          style={styles.text}
-          placeholder="john@appleseed.com"
-        />
-        <Text style={styles.text}>Lösenord:</Text>
-        <TextInput
-          style={styles.text}
-          placeholder="Lösenord"
-          secureTextEntry={true}
-        />
-        <Button
-          title="Nästa"
-          onPress={() => navigate('EnterName')}
-        />
-      </View>
+      <Container>
+        <MainHeader navigation={navigation} />
+        <Container style={styles.center}>
+          <View style={styles.center} style={styles.card}>
+            <Item>
+              <Input
+                placeholder="Email"
+              />
+            </Item>
+            <Item>
+              <Input
+                placeholder="Lösenord"
+                secureTextEntry={true}
+              />
+            </Item>
+            <Button
+              style={styles.topMargin}
+              bordered block
+              onPress={() => navigation.navigate('EnterName')}>
+              <Text>Nästa</Text>
+            </Button>
+          </View>
+        </Container>
+      </Container>
     );
   }
 }

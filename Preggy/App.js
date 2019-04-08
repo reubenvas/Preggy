@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
+import { Header, Container, Button, Text } from 'native-base';
+
 import Welcome from './components/setup/Welcome';
 import LogIn from './components/setup/LogIn';
 import Relation from './components/setup/Relation';
