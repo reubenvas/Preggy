@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha **/*test.js --reporter spec",
+    "pre-start": "npm run reset-db",
     "start": "nodemon server.js",
-    "lint": "eslint *.js --fix"
+    "lint": "eslint *.js --fix",
+    "reset-db": "node ./db/resetDb.js"
   },
   "author": "CodeBlooded",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
     "mocha": "^6.0.2",
-    "mongodb": "^3.2.2"
+    "mongodb": "^3.2.2",
+    "node-fetch": "^2.3.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

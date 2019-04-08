@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Text, View } from 'react-native';
-import getDate from '../handlers/getDateAsString';
-import styles from '../styles';
+import getDate from '../../handlers/getDateAsString';
+import styles from '../../styles';
 
 
 import DatePicker from './DatePicker';
@@ -22,8 +22,10 @@ export default class SetupPeriod extends Component {
     minDate = getDate(new Date(Date.now() - 280 * 86400000)) //IGÅR - 280DGR
 
     render() {
-        const { navigate, getParam } = this.props.navigation;
-        const name = getParam('name');
+        const { navigation } = this.props;
+        const name = navigation.getParam('name');
+        const relation = navigation.getParam('relation');
+
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Första dagen av senaste mensen:</Text>
@@ -32,15 +34,22 @@ export default class SetupPeriod extends Component {
                     maxDate={this.maxDate}
                     setDates={this.setPregDates}
                     uri='/api/get_week/period_date/'
-                    />
+                />
                 <Text style={styles.text} style={styles.topMargin}>Ditt beräknade förlossningsdatum är </Text>
                 <Text>{this.state.dueDate}</Text>
                 <Button
                     title="Klar"
-                    onPress={() => navigate('Home', {
-                        ...this.state,
-                        name
-                    })} />
+                    onPress={() => {
+                        if (this.state.dueDate) {
+                            navigation.navigate('Home', {
+                                ...this.state,
+                                name,
+                                relation
+                            })
+                        }
+                    }
+
+                    } />
             </View>
         )
     }

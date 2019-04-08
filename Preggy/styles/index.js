@@ -5,7 +5,7 @@ export default styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: 'rgb(251,246,247)',
     },
     heading: {
         fontSize: 25

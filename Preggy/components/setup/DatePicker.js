@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-native-datepicker'
-import config from '../config'
-import getDate from '../handlers/getDateAsString';
+import config from '../../config'
+import getDate from '../../handlers/getDateAsString';
 
 export default class MyDatePicker extends Component {
   state = {

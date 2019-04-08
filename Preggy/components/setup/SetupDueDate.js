@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import DatePicker from './DatePicker';
 import { Button, Text, View } from 'react-native';
-import getDate from '../handlers/getDateAsString';
-import styles from '../styles';
+import getDate from '../../handlers/getDateAsString';
+import styles from '../../styles';
 
 
 
@@ -10,7 +10,8 @@ export default class SetupDueDate extends Component {
     state = {
         dueDate: '',
         currentWeek: '',
-        timePregnant: ''
+        timePregnant: '',
+        tagLine: ''
     }
 
     minDate = getDate(new Date()); // IDAG
@@ -22,9 +23,9 @@ export default class SetupDueDate extends Component {
 
 
     render() {
-        const { navigate } = this.props.navigation;
         const { navigation } = this.props;
         const name = navigation.getParam('name');
+        const relation = navigation.getParam('relation');
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>Mitt beräknade förlossningsdatum:</Text>
@@ -36,16 +37,22 @@ export default class SetupDueDate extends Component {
                 />
                 <Text
                     style={styles.smallerText}
-                    onPress={() => navigate('SetupPeriod', {name})}
+                    onPress={() => navigation.navigate('SetupPeriod', {name, relation})}
                 >
                 Hjälp mig att beräkna
                 </Text>
                 <Button
                     title="Klar"
-                    onPress={() => navigate('Home', {
-                        ...this.state,
-                        name
-                    })}
+                    onPress={() => {
+                        if(this.state.dueDate){
+                            navigation.navigate('Home', {
+                            ...this.state,
+                            name,
+                            relation
+                            })
+                        }
+                    }
+                }
                 />
             </View>
         )

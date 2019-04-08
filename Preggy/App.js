@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import Welcome from './components/Welcome';
-import LogIn from './components/LogIn';
-import EnterName from './components/EnterName';
-import SetupDueDate from './components/SetupDueDate';
-import SetupPeriod from './components/SetupPeriod';
+import Welcome from './components/setup/Welcome';
+import LogIn from './components/setup/LogIn';
+import Relation from './components/setup/Relation';
+import EnterName from './components/setup/EnterName';
+import SetupDueDate from './components/setup/SetupDueDate';
+import SetupPeriod from './components/setup/SetupPeriod';
 import Home from './components/Home';
 import WeekInfo from './components/WeekInfo';
 
@@ -13,6 +14,7 @@ const MainNavigator = createStackNavigator({
   Welcome,
   LogIn,
   EnterName,
+  Relation,
   SetupDueDate,
   SetupPeriod,
   Home,

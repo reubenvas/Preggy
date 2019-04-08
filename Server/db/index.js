@@ -21,4 +21,8 @@ module.exports = {
     const data = await db.collection('weeks').find({ week }).toArray();
     return data[0];
   },
+  async getBlogposts(week) {
+    const data = await db.collection('blogposts').find({ week }).toArray();
+    return data;
+  },
 };
