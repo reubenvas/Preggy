@@ -3,8 +3,6 @@ import { Button, Text, Card, CardItem } from 'native-base';
 import { Image } from 'react-native';
 
 export default class BlogCard extends Component {
- 
-
   render() {
     return (
         <Card style={{width: 280, borderRadius: 10}}>

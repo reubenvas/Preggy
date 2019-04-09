@@ -6,6 +6,7 @@ export default class preggyProgress extends Component{
     state = {
         percentage: 0,
     }
+    
     async componentDidMount(){
 
         const recurse = async () => {

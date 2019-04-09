@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import styles from '../styles';
-import { Button, Text, Container, View, Content, CardItem, Card, Left, Body } from 'native-base';
+import { Button, Text, Container, View, Content, CardItem, Card, Left, Body} from 'native-base';
 import ProgressCircle from './ProgressCircle';
 import MainHeader from './MainHeader';
-import BlogCard from './BlogCard';
 import { BlogCarousel } from './Carousel';
 
 export default class Home extends Component {
@@ -13,7 +12,6 @@ export default class Home extends Component {
     gesturesEnabled: false,
   };
 
-  
   render() {
     const { getParam, navigate } = this.props.navigation;
     
@@ -55,7 +53,7 @@ export default class Home extends Component {
             </View>
             <View style={{flexDirection: 'row', marginVertical: 30}}>
             
-            <Button bordered
+            <Button bordered 
               style={{ margin: 5}}
               onPress={() => navigate('WeekInfo', {
                 currentWeek,
@@ -64,7 +62,7 @@ export default class Home extends Component {
               <Text>Bebis</Text>
             </Button>
 
-            <Button bordered
+            <Button bordered 
               style={{ margin: 5}}
               onPress={() => navigate('WeekInfo', {
                 currentWeek,
@@ -73,7 +71,7 @@ export default class Home extends Component {
               <Text>Mamma</Text>
             </Button>
 
-            <Button bordered
+            <Button bordered 
               style={{ margin: 5}}
               onPress={() => navigate('WeekInfo', {
                 currentWeek,
