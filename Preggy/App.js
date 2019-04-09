@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createDrawerNavigator ,createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Welcome from './components/setup/Welcome';
 import LogIn from './components/setup/LogIn';
@@ -10,7 +10,7 @@ import SetupPeriod from './components/setup/SetupPeriod';
 import Home from './components/Home';
 import WeekInfo from './components/WeekInfo';
 
-const MainNavigator = createStackNavigator({
+const Setup = createStackNavigator({
   Welcome,
   LogIn,
   EnterName,
@@ -20,14 +20,24 @@ const MainNavigator = createStackNavigator({
   Home,
   WeekInfo,
 },
-  { initialRouteName: 'Home' } // CHANGE ME BACK!
+  { initialRouteName: 'Welcome' } // CHANGE ME BACK!
 );
 
-const AppContainer = createAppContainer(MainNavigator);
+const Menu = createDrawerNavigator({
+  Home,
+  WeekInfo,
+},
+  { 
+  initialRouteName: 'Welcome' },
+);
+
+const Setup = createAppContainer(Setup);
+const AppContainer = createAppContainer(Menu);
+
 
 export default class App extends Component {
   render() {
-    return (
+    return ( 
       <AppContainer />
     )
   }

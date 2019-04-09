@@ -8,7 +8,6 @@ export default class EnterName extends Component {
   static navigationOptions = {
     header: null,
   };
-
   state = {
     name: '',
   }
