@@ -32,7 +32,7 @@ export default styles = StyleSheet.create({
     },
     image: {
         height: 150,
-        width: 250,
+        width: 240,
         flex: 1,
         borderRadius: 10,
     },

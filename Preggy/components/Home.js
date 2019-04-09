@@ -4,6 +4,7 @@ import { Button, Text, Container, View, Content, CardItem, Card, Left, Body } fr
 import ProgressCircle from './ProgressCircle';
 import MainHeader from './MainHeader';
 import BlogCard from './BlogCard';
+import { BlogCarousel } from './Carousel';
 
 export default class Home extends Component {
 
@@ -52,10 +53,10 @@ export default class Home extends Component {
                 <Text style={{fontSize: 10}}>DAGAR KVAR</Text>
               </View>
             </View>
-            <View style={styles.row}>
+            <View style={{flexDirection: 'row', marginVertical: 30}}>
             
             <Button bordered
-              style={{alignSelf: 'center', marginTop: 30}}
+              style={{ margin: 5}}
               onPress={() => navigate('WeekInfo', {
                 currentWeek,
               })}
@@ -64,7 +65,7 @@ export default class Home extends Component {
             </Button>
 
             <Button bordered
-              style={{alignSelf: 'center', marginTop: 30}}
+              style={{ margin: 5}}
               onPress={() => navigate('WeekInfo', {
                 currentWeek,
               })}
@@ -73,7 +74,7 @@ export default class Home extends Component {
             </Button>
 
             <Button bordered
-              style={{alignSelf: 'center', marginTop: 30}}
+              style={{ margin: 5}}
               onPress={() => navigate('WeekInfo', {
                 currentWeek,
               })}
@@ -81,11 +82,9 @@ export default class Home extends Component {
               <Text>Partner</Text>
             </Button>
               </View>
-              <Text>Bloggar</Text>
-              <BlogCard />
-              <BlogCard />
-              <BlogCard />
-              <Text>Erbjudanden</Text>
+              <Text style={{marginBottom: 10}}>Bloggar</Text>
+              <BlogCarousel />
+              <Text style={{marginTop: 30, marginBottom: 10}}>Erbjudanden</Text>
               <Card style={{width: 300, padding: 20, borderRadius: 10}}>
                 <CardItem style={{flexDirection: 'column'}}>
                   <Left>
