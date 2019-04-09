@@ -16,7 +16,8 @@ export default class SetupDueDate extends Component {
     dueDate: '',
     currentWeek: '',
     timePregnant: '',
-    tagLine: ''
+    tagLine: '',
+    daysPassed: '',
   }
 
   minDate = getDate(new Date()); // IDAG
@@ -33,7 +34,10 @@ export default class SetupDueDate extends Component {
     const relation = navigation.getParam('relation');
     return (
       <Container>
-        <MainHeader navigation={navigation} />
+        <MainHeader 
+        navigation={navigation}
+        menu={false}
+        />
         <Container style={styles.center}>
           <View style={styles.center}>
             <Text

@@ -1,9 +1,6 @@
 import { StyleSheet } from 'react-native';
 
 export default styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'rgb(251,246,247)',
-    },
     heading: {
         fontFamily: 'NotoSerifTC-SemiBold',
         fontSize: 25,
@@ -33,6 +30,12 @@ export default styles = StyleSheet.create({
     card: {
         width: 300,
     },
+    image: {
+        height: 150,
+        width: 250,
+        flex: 1,
+        borderRadius: 10,
+    },
     center: {
         flex: 1,
         flexDirection: 'column',
@@ -43,6 +46,7 @@ export default styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
+        backgroundColor: 'rgb(251,246,247)'
     }
   })
 

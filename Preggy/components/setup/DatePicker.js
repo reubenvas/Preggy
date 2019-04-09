@@ -26,6 +26,15 @@ export default class MyDatePicker extends Component {
       return data;
   }
 
+  updateDate = async (date) => {
+    console.log(date);
+    this.setState( {date} );
+    const pregnancyInfo = await this.getPregnancyInfo(date);
+    const formattedDueDate = getDate(new Date(pregnancyInfo.dueDate));
+    pregnancyInfo.dueDate = formattedDueDate;
+    this.props.setDates(pregnancyInfo);
+  }
+
   render(){
     return (
 
@@ -33,7 +42,7 @@ export default class MyDatePicker extends Component {
         style={{width: 200}}
         date={this.state.date}
         mode="date"
-        placeholder="select date"
+        placeholder="Välj datum"
         format="YYYY-MM-DD"
         minDate={this.state.minDate}
         maxDate={this.state.maxDate}
@@ -50,13 +59,12 @@ export default class MyDatePicker extends Component {
             marginLeft: 36
           }
         }}
+        onOpenModal={ async () => {
+          await this.updateDate(this.state.date);
+        }}
         onDateChange={ async (date) => {
-          this.setState( {date} );
-          const pregnancyInfo = await this.getPregnancyInfo(date);
-          const formattedDueDate = getDate(new Date(pregnancyInfo.dueDate));
-          pregnancyInfo.dueDate = formattedDueDate;
-          this.props.setDates(pregnancyInfo);
-          }}
+          await this.updateDate(date);
+        }}          
       />
     )
   }

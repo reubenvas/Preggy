@@ -22,7 +22,7 @@ const MainNavigator = createStackNavigator({
   Home,
   WeekInfo
 },
-  { initialRouteName: 'Welcome' }
+  { initialRouteName: 'Home' } // CHANGE ME BACK!
 );
 
 const AppContainer = createAppContainer(MainNavigator);

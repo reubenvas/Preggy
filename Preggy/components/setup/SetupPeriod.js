@@ -15,7 +15,9 @@ export default class SetupPeriod extends Component {
   state = {
     dueDate: '',
     currentWeek: '',
-    timePregnant: ''
+    timePregnant: '',
+    tagLine: '',
+    daysPassed: '',
   }
 
   setPregDates = (pregnancyInfo) => {
@@ -48,7 +50,10 @@ export default class SetupPeriod extends Component {
 
     return (
       <Container>
-        <MainHeader navigation={navigation} />
+        <MainHeader 
+        navigation={navigation}
+        menu={false}
+        />
         <Container style={styles.center}>
           <View style={styles.center}>
             <Text
@@ -65,6 +70,7 @@ export default class SetupPeriod extends Component {
               bordered block
               style={styles.topMargin}
               onPress={() => {
+                console.log(this.state);
                 if (this.state.dueDate) {
                   navigation.navigate('Home', {
                     ...this.state,

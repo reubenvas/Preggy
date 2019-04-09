@@ -33,4 +33,5 @@ module.exports = {
   calculateDueDate,
   calculateWeek,
   calculateAdditionalDays,
+  getDaysPassed,
 };

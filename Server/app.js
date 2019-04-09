@@ -4,6 +4,7 @@ const {
   calculateDueDate,
   calculateWeek,
   calculateAdditionalDays,
+  getDaysPassed,
 } = require('./calendar');
 
 const app = express();
@@ -23,12 +24,14 @@ app.get('/api/get_week/period_date/:dateString', async (req, res) => {
   const dueDate = calculateDueDate(req.params.dateString);
   const currentWeek = calculateWeek(today, dueDate);
   const timePregnant = calculateAdditionalDays(today, dueDate);
+  const daysPassed = getDaysPassed(today, dueDate);
   const { tagLine } = await db.getWeek(Number(currentWeek));
   const data = {
     dueDate,
     currentWeek,
     timePregnant,
-    tagLine,
+    ...tagLine,
+    daysPassed,
   };
 
   res.send(JSON.stringify(data));
@@ -39,12 +42,14 @@ app.get('/api/get_week/due_date/:dateString', async (req, res) => {
   const dueDate = new Date(req.params.dateString);
   const currentWeek = calculateWeek(today, dueDate);
   const timePregnant = calculateAdditionalDays(today, dueDate);
+  const daysPassed = getDaysPassed(today, dueDate);
   const { tagLine } = await db.getWeek(Number(currentWeek));
   const data = {
     dueDate,
     currentWeek,
     timePregnant,
-    tagLine,
+    ...tagLine,
+    daysPassed,
   };
 
   res.send(JSON.stringify(data));

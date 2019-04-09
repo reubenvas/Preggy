@@ -11,7 +11,10 @@ export default class LogIn extends Component {
     const { navigation } = this.props;
     return (
       <Container>
-        <MainHeader navigation={navigation} />
+        <MainHeader 
+        navigation={navigation}
+        menu={false}
+        />
         <Container style={styles.center}>
           <View style={styles.center} style={styles.card}>
             <Item>

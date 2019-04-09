@@ -1,34 +1,104 @@
 import React, { Component } from 'react';
 import styles from '../styles';
-import { Button, Text, Container, View } from 'native-base';
-
+import { Button, Text, Container, View, Content, CardItem, Card, Left, Body } from 'native-base';
+import ProgressCircle from './ProgressCircle';
+import MainHeader from './MainHeader';
+import BlogCard from './BlogCard';
 
 export default class Home extends Component {
+
   static navigationOptions = {
     header: null,
+    gesturesEnabled: false,
   };
+
+  
   render() {
     const { getParam, navigate } = this.props.navigation;
+    
+    const [name, currentWeek, tagLine, timePregnant, daysPassed] = 
+    [getParam('name'), getParam('currentWeek'), getParam('tagLine'), getParam('timePregnant'), getParam('daysPassed')];
+    
+    calculatePercentage = () => {
+      return parseInt((daysPassed / 280) * 100);
+    }
 
-    const [name, relation, currentWeek, tagLine, timePregnant, dueDate] = 
-[getParam('name'), getParam('relation'), getParam('currentWeek'), getParam('tagLine'), getParam('timePregnant'), getParam('dueDate')];
+    daysRemaining = () => {
+      return 280 - daysPassed;
+    }
 
     return (
-    <Container style={styles.center}>
-      <View style={styles.center}>
-        <Text style={styles.heading}>Hej {name}!</Text>
-        <Text style={styles.smallerText}>{tagLine}</Text>
-        <Text style={styles.heading}>Du ska bli {relation}!</Text> 
-        <Text style={styles.smallerText}>Du är i vecka {currentWeek} ( {timePregnant} )</Text>
-        <Text style={styles.smallerText}>Ditt beräknade förlossningsdatum är {dueDate}</Text>
-        <Button
-          onPress={() => navigate('WeekInfo', {
-            currentWeek,
-          })}
-        >
-        <Text>Se vad som händer denna vecka</Text>
-        </Button>
-      </View>
+      <Container >
+        <MainHeader 
+          navigation={this.props.navigation} 
+          back={false}
+          />
+        <Content style={{backgroundColor: 'rgb(251,246,247)'}}>
+          <View style={styles.center}>
+            <Text style={{fontFamily: 'NotoSerifTC-SemiBold', fontSize: 25, marginTop: 10}}>Hej {name}!</Text>
+            <Text style={{fontFamily: 'Roboto-Light', fontSize: 14, marginTop: 10, marginBottom: 20}}>{tagLine}</Text>
+            <View style={styles.row}>
+              <View style={{marginHorizontal: 30, textAlign: 'center'}}>
+                <Text style={{marginTop: 40}}>{calculatePercentage()} %</Text>
+                <Text style={{fontSize: 10}}>AVKLARAT</Text>
+              </View>
+              <ProgressCircle 
+                style={styles.topMargin} 
+                timePregnant={timePregnant} 
+                currentWeek={currentWeek}
+                percentage={calculatePercentage()}/>
+              <View style={{marginHorizontal: 30, textAlign: 'center',}}>
+                <Text style={{marginTop: 40}}>{daysRemaining()}</Text>
+                <Text style={{fontSize: 10}}>DAGAR KVAR</Text>
+              </View>
+            </View>
+            <View style={styles.row}>
+            
+            <Button bordered
+              style={{alignSelf: 'center', marginTop: 30}}
+              onPress={() => navigate('WeekInfo', {
+                currentWeek,
+              })}
+              >
+              <Text>Bebis</Text>
+            </Button>
+
+            <Button bordered
+              style={{alignSelf: 'center', marginTop: 30}}
+              onPress={() => navigate('WeekInfo', {
+                currentWeek,
+              })}
+              >
+              <Text>Mamma</Text>
+            </Button>
+
+            <Button bordered
+              style={{alignSelf: 'center', marginTop: 30}}
+              onPress={() => navigate('WeekInfo', {
+                currentWeek,
+              })}
+              >
+              <Text>Partner</Text>
+            </Button>
+              </View>
+              <Text>Bloggar</Text>
+              <BlogCard />
+              <BlogCard />
+              <BlogCard />
+              <Text>Erbjudanden</Text>
+              <Card style={{width: 300, padding: 20, borderRadius: 10}}>
+                <CardItem style={{flexDirection: 'column'}}>
+                  <Left>
+                    <Body>
+                      <Text>BARNFÖRSÄKRING 25%</Text>
+                      <Text note>TRYGGHANSA</Text>
+                    </Body>
+                  </Left>
+                </CardItem>
+              </Card>
+      
+          </View>
+        </Content>
       </Container>
     )
   }

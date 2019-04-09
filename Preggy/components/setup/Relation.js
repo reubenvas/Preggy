@@ -14,7 +14,10 @@ export default class EnterName extends Component {
 
     return (
       <Container>
-        <MainHeader navigation={navigation} />
+        <MainHeader 
+        navigation={navigation}
+        menu={false}
+        />
         <Container style={styles.center}>
           <View style={styles.center}>
             <Text style={styles.text}>Vem är du?</Text>
