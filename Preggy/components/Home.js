@@ -12,10 +12,8 @@ export default class Home extends Component {
   };
 
   render() {
-    const { getParam, navigate } = this.props.navigation;
-    
-    const [name, currentWeek, tagLine, timePregnant, daysPassed] = 
-    [getParam('name'), getParam('currentWeek'), getParam('tagLine'), getParam('timePregnant'), getParam('daysPassed')];
+    const { navigate } = this.props.navigation;
+    const {name, currentWeek, tagLine, timePregnant, daysPassed} = this.props;
     
     calculatePercentage = () => {
       return parseInt((daysPassed / 280) * 100);
@@ -81,7 +79,7 @@ export default class Home extends Component {
               </View>
               <Text style={{marginBottom: 10}}>Bloggar</Text>
               <BlogCarousel />
-              <Text style={{marginTop: 30, marginBottom: 10}}>Erbjudanden</Text>
+              <Text style={{marginTop: 30, marginBottom: 10}}>Veckans Deal Vecka {currentWeek}</Text>
               <Card style={{width: 300, padding: 20, borderRadius: 10}}>
                 <CardItem style={{flexDirection: 'column'}}>
                   <Left>

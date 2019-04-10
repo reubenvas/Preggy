@@ -7,7 +7,8 @@ export default class MainHeader extends Component {
   displayMenuBtn = () => {
     if (this.props.menu !== false) {
       return (
-        <Button transparent >
+        <Button transparent 
+          onPress={() => this.props.navigation.openDrawer()}>
         <Icon name='menu' />
       </Button>
       )

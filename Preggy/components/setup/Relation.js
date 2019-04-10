@@ -7,6 +7,7 @@ import MainHeader from '../MainHeader';
 export default class EnterName extends Component {
   static navigationOptions = {
     header: null,
+    drawerLockMode: 'locked-closed',
   };
   render() {
     const { navigation } = this.props;

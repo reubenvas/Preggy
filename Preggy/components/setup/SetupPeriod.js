@@ -10,6 +10,7 @@ import DatePicker from './DatePicker';
 export default class SetupPeriod extends Component {
   static navigationOptions = {
     header: null,
+    // drawerLockMode: 'locked-closed',
   };
 
   state = {
@@ -72,11 +73,7 @@ export default class SetupPeriod extends Component {
               onPress={() => {
                 console.log(this.state);
                 if (this.state.dueDate) {
-                  navigation.navigate('Home', {
-                    ...this.state,
-                    name,
-                    relation
-                  })
+                  this.props.change();
                 }
               }
 

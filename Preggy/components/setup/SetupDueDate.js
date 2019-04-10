@@ -10,6 +10,7 @@ import MainHeader from '../MainHeader';
 export default class SetupDueDate extends Component {
   static navigationOptions = {
     header: null,
+    // drawerLockMode: 'locked-closed',
   };
 
   state = {
@@ -34,9 +35,9 @@ export default class SetupDueDate extends Component {
     const relation = navigation.getParam('relation');
     return (
       <Container>
-        <MainHeader 
-        navigation={navigation}
-        menu={false}
+        <MainHeader
+          navigation={navigation}
+          menu={false}
         />
         <Container style={styles.center}>
           <View style={styles.center}>
@@ -61,12 +62,12 @@ export default class SetupDueDate extends Component {
               style={styles.topMargin}
               bordered block
               onPress={() => {
+                console.log(this.state);
                 if (this.state.dueDate) {
-                  navigation.navigate('Home', {
-                    ...this.state,
-                    name,
-                    relation
-                  })
+                  const { dueDate, currentWeek, timePregnant, tagLine, daysPassed } = this.state;
+                  this.props.setPregInfo( {dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })
+                  this.props.change();
+
                 }
               }
               }
@@ -74,9 +75,9 @@ export default class SetupDueDate extends Component {
               <Text>Klar</Text>
             </Button>
           </View>
-          </Container>
-          </Container>
-          )
-        }
-      }
-      
+        </Container>
+      </Container>
+    )
+  }
+}
+

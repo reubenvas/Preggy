@@ -30,7 +30,7 @@ app.get('/api/get_week/period_date/:dateString', async (req, res) => {
     dueDate,
     currentWeek,
     timePregnant,
-    ...tagLine,
+    tagLine,
     daysPassed,
   };
 
@@ -48,7 +48,7 @@ app.get('/api/get_week/due_date/:dateString', async (req, res) => {
     dueDate,
     currentWeek,
     timePregnant,
-    ...tagLine,
+    tagLine,
     daysPassed,
   };
 

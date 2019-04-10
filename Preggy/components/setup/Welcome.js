@@ -5,9 +5,11 @@ import styles from '../../styles';
 export default class Welcome extends Component {
   static navigationOptions = {
     header: null,
+    drawerLockMode: 'locked-closed',
   };
   render() {
     const { navigation } = this.props;
+    console.log(this.props);
     return (
       <Container style={styles.center}>
         <View style={styles.center}>

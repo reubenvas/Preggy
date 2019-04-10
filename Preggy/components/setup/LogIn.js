@@ -6,6 +6,7 @@ import MainHeader from '../MainHeader';
 export default class LogIn extends Component {
   static navigationOptions = {
     header: null,
+    drawerLockMode: 'locked-closed',
   };
   render() {
     const { navigation } = this.props;
