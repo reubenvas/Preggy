@@ -78,7 +78,7 @@ export default class Home extends Component {
               </Button>
             </View>
             <Text style={{ marginBottom: 10 }}>Bloggar</Text>
-            <BlogCarousel />
+            <BlogCarousel navigate={navigate} week={currentWeek} />
             <Text style={{ marginTop: 30, marginBottom: 10 }}>Veckans Deal Vecka {currentWeek}</Text>
             <Card style={{ width: 300, padding: 20, borderRadius: 10 }}>
               <CardItem style={{ flexDirection: 'column' }}>

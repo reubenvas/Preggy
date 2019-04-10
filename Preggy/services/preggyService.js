@@ -6,4 +6,11 @@ async function getWeek(num) {
     .catch(err => console.error(err))
 }
 
-export default {getWeek};
+async function getBlogpostforWeek(num) {
+    console.log(num);
+    return fetch(config.backendUrl + `/api/blogposts/${num}`)
+        .then(res => res.json())
+        .catch(err => console.error(err));
+}
+
+export default {getWeek, getBlogpostforWeek};

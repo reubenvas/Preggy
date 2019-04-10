@@ -1,24 +1,24 @@
 import ProgressCircle from 'react-native-progress-circle';
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Text } from 'react-native';
 
-export default class preggyProgress extends Component{
+export default class preggyProgress extends Component {
     state = {
         percentage: 0,
     }
-    
-    async componentDidMount(){
+
+    async componentDidMount() {
 
         const recurse = async () => {
             return new Promise((resolve) => {
-                setTimeout( () => {
-                    this.setState( {percentage: this.state.percentage + 1});
+                const percent = this.state.percentage;
+                setTimeout(() => {
+                    this.setState({ percentage: percent + 1 });
                     resolve()
-                }, 3);
+                }, percent / 4 );
             })
         }
-
-        while(this.state.percentage < this.props.percentage){
+        while (this.state.percentage < this.props.percentage) {
             await recurse()
         }
     }
@@ -27,16 +27,16 @@ export default class preggyProgress extends Component{
     render() {
         return (
             <ProgressCircle
-            percent={this.state.percentage}
-            radius={60}
-            borderWidth={8}
-            color="rgb(233,136,138)"
-            shadowColor="rgb(239,234,235)"
-            bgColor="rgb(251,246,247)"
+                percent={this.state.percentage}
+                radius={60}
+                borderWidth={8}
+                color="rgb(233,136,138)"
+                shadowColor="rgb(239,234,235)"
+                bgColor="rgb(251,246,247)"
             >
-            <Text style={{ fontSize: 18 }}>{this.props.currentWeek}</Text>
-            <Text style={{ fontSize: 10 }}>({this.props.timePregnant})</Text>
-        </ProgressCircle>
+                <Text style={{ fontSize: 18 }}>{this.props.currentWeek}</Text>
+                <Text style={{ fontSize: 10 }}>({this.props.timePregnant})</Text>
+            </ProgressCircle>
         )
     }
 }
