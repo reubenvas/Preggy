@@ -14,20 +14,17 @@ export default class MyDatePicker extends Component {
     minDate: this.props.minDate,
   };
 
-  // FIX SO THAT THE USER HAS TO CHOOSE A DATE!
-
   uri = this.props.uri;
 
   getPregnancyInfo = async (date) => {
     const data = await fetch(`${config.backendUrl}${this.uri}${date}`)
       .then(res => res.json())
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
 
       return data;
   }
 
   updateDate = async (date) => {
-    console.log(date);
     this.setState( {date} );
     const pregnancyInfo = await this.getPregnancyInfo(date);
     const formattedDueDate = getDate(new Date(pregnancyInfo.dueDate));

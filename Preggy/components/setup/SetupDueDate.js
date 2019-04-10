@@ -62,7 +62,6 @@ export default class SetupDueDate extends Component {
               style={styles.topMargin}
               bordered block
               onPress={() => {
-                console.log(this.state);
                 if (this.state.dueDate) {
                   const { dueDate, currentWeek, timePregnant, tagLine, daysPassed } = this.state;
                   this.props.setPregInfo( {dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })

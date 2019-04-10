@@ -9,7 +9,6 @@ export default class Welcome extends Component {
   };
   render() {
     const { navigation } = this.props;
-    console.log(this.props);
     return (
       <Container style={styles.center}>
         <View style={styles.center}>
