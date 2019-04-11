@@ -29,7 +29,7 @@ export default class MainHeader extends Component {
           {this.displayMenuBtn()}
         </Left>
         <Body>
-          <Title>Preggy</Title>
+          <Title>Baby Journey</Title>
         </Body>
         <Right />
       </Header>
