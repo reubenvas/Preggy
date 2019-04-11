@@ -75,7 +75,6 @@ export default class SetupPeriod extends Component {
                 if (this.state.dueDate) {
                   const { dueDate, currentWeek, timePregnant, tagLine, daysPassed } = this.state;
                   this.props.setPregInfo( {dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })
-                  this.props.change();
                 }
               }
 

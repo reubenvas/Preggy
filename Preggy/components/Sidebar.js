@@ -6,17 +6,28 @@ import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class ListExample extends Component {
+  state = {
+    currentWeek: '',
+  }
+
   navigateToScreen = (route) => () => {
     const navigateAction = NavigationActions.navigate({
-      routeName: route
+      routeName: route,
+      params: { currentWeek: this.state.currentWeek },
     });
     this.props.navigation.dispatch(navigateAction);
   }
 
+  // ONLY IN DEVELOPMENT MODE
   deleteAllData = async () => {
     return await AsyncStorage.clear();
   }
 
+  async componentDidMount() {
+    const currentWeek = await AsyncStorage.getItem('currentWeek');
+    console.log(currentWeek);
+    this.setState( {currentWeek} );
+  }
 
   render() {
     return (
@@ -24,36 +35,36 @@ class ListExample extends Component {
         <Content style={{ marginTop: 55 }}>
           <List>
             <ListItem>
-              <Button danger onPress={() => this.deleteAllData() }>
+              <Button danger onPress={this.deleteAllData}>
                 <Text>Ta bort Användardata</Text>
               </Button>
-              <Button transparent dark onPress={() => this.props.navigation.closeDrawer() }>
+              <Button transparent dark onPress={this.props.navigation.closeDrawer}>
                 <Text>X</Text>
               </Button>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Min Profil</Text>
+              <Text onPress={this.props.navigation.closeDrawer } >Min Profil</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('WeekInfo')} > Vad händer med mamma </Text>
+              <Text onPress={this.navigateToScreen('WeekInfo')} >Min Graviditet</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Upptäck</Text>
+              <Text onPress={this.navigateToScreen('Explore')} >Upptäck</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Sparade Artiklar</Text>
+              <Text onPress={this.navigateToScreen('SavedArticles')} >Sparade Artiklar</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Notiser</Text>
+              <Text onPress={this.navigateToScreen('Notifications')} >Notiser</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Färger</Text>
+              <Text onPress={this.navigateToScreen('Themes')} >Teman</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Inställningar</Text>
+              <Text onPress={this.navigateToScreen('Settings')} >Inställningar</Text>
             </ListItem>
             <ListItem>
-              <Text onPress={this.navigateToScreen('Home')} >Support</Text>
+              <Text onPress={this.navigateToScreen('Support')} >Support</Text>
             </ListItem>
           </List>
         </Content>

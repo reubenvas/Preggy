@@ -35,7 +35,7 @@ export default class Home extends Component {
             <Text style={{ fontFamily: 'Roboto-Light', fontSize: 14, marginTop: 10, marginBottom: 20 }}>{tagLine}</Text>
             <View style={styles.row}>
               <View style={{ marginHorizontal: 30, textAlign: 'center' }}>
-                <Text style={{ marginTop: 40 }}>{calculatePercentage()} %</Text>
+                <Text style={{ marginTop: 40, fontSize: 21 }}>{calculatePercentage()} %</Text>
                 <Text style={{ fontSize: 10 }}>AVKLARAT</Text>
               </View>
               <ProgressCircle
@@ -44,7 +44,7 @@ export default class Home extends Component {
                 currentWeek={currentWeek}
                 percentage={calculatePercentage()} />
               <View style={{ marginHorizontal: 30, textAlign: 'center', }}>
-                <Text style={{ marginTop: 40 }}>{daysRemaining()}</Text>
+                <Text style={{ marginTop: 40, fontSize: 21 }}>{daysRemaining()}</Text>
                 <Text style={{ fontSize: 10 }}>DAGAR KVAR</Text>
               </View>
             </View>

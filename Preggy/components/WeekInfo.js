@@ -17,9 +17,11 @@ export default class WeekInfo extends Component {
   componentWillMount() {
     this.setState({ currentWeek: this.props.navigation.getParam('currentWeek') });
   }
-
-
+  
+  
   async componentDidMount() {
+    console.log('logging inside did mount');
+    console.log(this.state);
     const result = await preggyService.getWeek(this.state.currentWeek);
     this.setState({ title: result.title, content: result.content });
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { createDrawerNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
-import {Spinner, Container} from 'native-base';
-import AsyncStorage from '@react-native-community/async-storage';
+import { Spinner, Container } from 'native-base';
+import asyncStorage from './handlers/asyncStorage';
 
 import Welcome from './components/setup/Welcome';
 import LogIn from './components/setup/LogIn';
@@ -13,6 +13,12 @@ import SideBar from './components/Sidebar';
 import Home from './components/Home';
 import WeekInfo from './components/WeekInfo';
 import BlogFrame from './components/BlogFrame';
+import Explore from './components/otherScreens/Explore';
+import SavedArticles from './components/otherScreens/SavedArticles';
+import Notifications from './components/otherScreens/Notifications';
+import Themes from './components/otherScreens/Themes';
+import Settings from './components/otherScreens/Settings';
+import Support from './components/otherScreens/Support';
 
 const Setup = value => createStackNavigator({
   Welcome,
@@ -22,56 +28,33 @@ const Setup = value => createStackNavigator({
   SetupDueDate: { screen: props => <SetupDueDate {...props} {...value} /> },
   SetupPeriod: { screen: props => <SetupPeriod {...props} {...value} /> },
 },
-  { initialRouteName: 'Welcome', headerMode: 'none' }
+  {
+    initialRouteName: 'Welcome',
+    headerMode: 'none'
+  }
 );
 
 const Menu = value => createDrawerNavigator({
   Home: { screen: props => <Home {...props} {...value} /> },
   WeekInfo,
+  Explore,
+  SavedArticles,
+  Notifications,
+  Themes,
+  Settings,
+  Support,
   BlogFrame
 },
   {
     initialRouteName: 'Home',
-  contentComponent: SideBar,
+    contentComponent: SideBar,
   },
 );
-
-storeData = async (key, value) => {
-  try {
-    await AsyncStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-retrieveData = async (key) => {
-  try {
-    const value = await AsyncStorage.getItem(key);
-    if (value !== null) {
-      return JSON.parse(value);
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
 
 export default class App extends Component {
   state = {
     isLoading: true,
     isSetup: false,
-    change: () => {
-      this.setState({ isSetup: true })
-    },
-    setPregInfo: (...pregData) => {
-      pregData = pregData[0];
-      for (key in pregData) {
-        storeData(key, pregData[key]);
-      }
-      storeData('isSetup', true);
-      this.setState({ ...pregData });
-    },
     dueDate: '',
     currentWeek: '',
     timePregnant: '',
@@ -79,46 +62,42 @@ export default class App extends Component {
     daysPassed: '',
     name: '',
     relation: '',
-  }
-
-  getPregDataStorage = async () => {
-    const keys = ['dueDate', 'currentWeek', 'timePregnant', 'tagLine', 'daysPassed', 'name', 'relation', 'isSetup'];
-    const data = await keys.map(key => retrieveData(key))
-    const values = await Promise.all(data);
-    const obj = {};
-    values.forEach((value, i) => {
-      obj[keys[i]] = value;
-    })
-    return obj;
+    setPregInfo: (...pregData) => {
+      pregData = pregData[0];
+      asyncStorage.storeObjAsync(pregData);
+      asyncStorage.storeDataAsync('isSetup', true);
+      this.setState({
+        ...pregData,
+        isSetup: true
+      });
+    },
   }
 
   async componentDidMount() {
-    const obj = await this.getPregDataStorage();
-    this.setState({ ...obj , isLoading: false })
+    const keys = ['dueDate', 'currentWeek', 'timePregnant', 'tagLine', 'daysPassed', 'name', 'relation', 'isSetup'];
+    const obj = await asyncStorage.getDataAsyncFromKeys(keys);
+    this.setState({
+      ...obj,
+      isLoading: false
+    })
   }
 
   renderPages = (SetupStages, AppContainer) => {
-    if (this.state.isLoading){
-      return <Container style={{flex:1, justifyContent: 'center', }}><Spinner color='red' /></Container>
-    }  
-    if (this.state.isSetup) {
-      return < AppContainer />;
+    if (this.state.isLoading) {
+      return (
+        <Container style={{ flex: 1, justifyContent: 'center', }}>
+          <Spinner color='red' />
+        </Container>
+      )
     }
-    return <SetupStages />;
-
+    return (this.state.isSetup) ? < AppContainer /> : <SetupStages />;
   }
-  
-  render() {
 
+  render() {
     const SetupConfig = Setup(this.state);
     const SetupStages = createAppContainer(SetupConfig);
-
     const AppConfig = Menu(this.state);
     const AppContainer = createAppContainer(AppConfig);
-
-    return (
-      this.renderPages(SetupStages, AppContainer)
-    )
+    return this.renderPages(SetupStages, AppContainer);
   }
 }
-
