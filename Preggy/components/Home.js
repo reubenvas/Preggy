@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from '../styles';
 import { Button, Text, Container, View, Content, CardItem, Card, Left, Body } from 'native-base';
 import ProgressCircle from './ProgressCircle';
 import MainHeader from './MainHeader';
@@ -30,22 +29,50 @@ export default class Home extends Component {
           back={false}
         />
         <Content style={{ backgroundColor: 'rgb(251,246,247)' }}>
-          <View style={styles.center}>
-            <Text style={{ fontFamily: 'NotoSerifTC-SemiBold', fontSize: 25, marginTop: 10 }}>Hej {name}!</Text>
-            <Text style={{ fontFamily: 'Roboto-Light', fontSize: 14, marginTop: 10, marginBottom: 20 }}>{tagLine}</Text>
-            <View style={styles.row}>
+          <View style={{
+            flex: 1,
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+          >
+            <Text
+              style={{
+                fontFamily: 'NotoSerifTC-SemiBold',
+                fontSize: 25,
+                marginTop: 10
+              }}
+            >
+              Hej {name}!
+              </Text>
+            <Text
+              style={{
+                fontFamily: 'Roboto-Light',
+                fontSize: 16,
+                marginTop: 10,
+                marginBottom: 20
+              }}
+            >
+              {tagLine}
+            </Text>
+            <View style={{ flexDirection: 'row' }}>
               <View style={{ marginHorizontal: 30, textAlign: 'center' }}>
-                <Text style={{ marginTop: 40, fontSize: 21 }}>{calculatePercentage()} %</Text>
-                <Text style={{ fontSize: 10 }}>AVKLARAT</Text>
+                <Text style={{ marginTop: 40, fontSize: 24 }}>
+                  {calculatePercentage()} %
+                </Text>
+                <Text style={{ fontSize: 12, textTransform: 'uppercase' }}>
+                  Avklarat
+                </Text>
               </View>
               <ProgressCircle
-                style={styles.topMargin}
+                style={{ marginTop: 20 }}
                 timePregnant={timePregnant}
                 currentWeek={currentWeek}
                 percentage={calculatePercentage()} />
               <View style={{ marginHorizontal: 30, textAlign: 'center', }}>
-                <Text style={{ marginTop: 40, fontSize: 21 }}>{daysRemaining()}</Text>
-                <Text style={{ fontSize: 10 }}>DAGAR KVAR</Text>
+                <Text style={{ marginTop: 40, fontSize: 24 }}>{daysRemaining()}</Text>
+                <Text style={{ fontSize: 12, textTransform: 'uppercase' }}>Dagar kvar</Text>
               </View>
             </View>
             <View style={{ flexDirection: 'row', marginVertical: 30 }}>
@@ -77,20 +104,21 @@ export default class Home extends Component {
                 <Text>Partner</Text>
               </Button>
             </View>
-            <Text style={{ marginBottom: 10 }}>Bloggar</Text>
+            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginBottom: 10 }}>
+              Vecka {currentWeek} i Sociala Medier
+            </Text>
             <BlogCarousel navigate={navigate} week={currentWeek} />
-            <Text style={{ marginTop: 30, marginBottom: 10 }}>Veckans Deal Vecka {currentWeek}</Text>
-            <Card style={{ width: 300, padding: 20, borderRadius: 10 }}>
+            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginTop: 30, marginBottom: 10 }}>Veckans Deal</Text>
+            <Card style={{ width: 280, padding: 20, borderRadius: 10 }}>
               <CardItem style={{ flexDirection: 'column' }}>
                 <Left>
                   <Body>
-                    <Text>BARNFÖRSÄKRING 25%</Text>
-                    <Text note>TRYGGHANSA</Text>
+                    <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 14, textTransform: 'uppercase' }}>Barnförsäkring 25%</Text>
+                    <Text note style={{ fontFamily: 'Roboto-Light', fontSize: 14, textTransform: 'uppercase' }}>Trygghansa</Text>
                   </Body>
                 </Left>
               </CardItem>
             </Card>
-
           </View>
         </Content>
       </Container>

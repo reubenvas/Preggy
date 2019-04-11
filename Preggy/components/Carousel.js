@@ -12,23 +12,13 @@ export class BlogCarousel extends Component {
     this._carousel = {};
     this.state = {
       blogs:
-      [
-        // {
-        //   title: <BlogCard navigate={this.props.navigate} />
-        // },
-        // {
-        //   title: <BlogCard navigate={this.props.navigate} />
-        // },
-        // {
-        //   title: <BlogCard navigate={this.props.navigate} />
-        // }
-      ],
+      [],
     };
   }
 
   async componentDidMount(){
-    const bloggArrä = await this.fetchBlogInfo();
-    const blogCards = bloggArrä.map( blogg => {
+    const bloggArray = await this.fetchBlogInfo();
+    const blogCards = bloggArray.map( blogg => {
       return this.createBlogCard(blogg);
     });
     this.setState( {blogs: [...blogCards]} );
@@ -42,7 +32,7 @@ export class BlogCarousel extends Component {
     return { title: <BlogCard navigate={this.props.navigate} blogData={blogData} />};
   }
 
-  _renderItem = ({ item, index }) => {
+  _renderItem = ({ item }) => {
     return (
       <View>
         {item.title}

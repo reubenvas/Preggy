@@ -1,17 +1,14 @@
-
 function calculateDueDate(date) {
   const lastPeriod = new Date(date);
   const dueDate = new Date(lastPeriod.setTime(lastPeriod.getTime() + 280 * 86400000));
   return dueDate;
 }
 
-
 function getDaysPassed(today, dueDate) {
   const dateDiff = (dueDate - today) / 86400000;
   const daysRemaining = Math.ceil(dateDiff);
   return 280 - daysRemaining;
 }
-
 
 function calculateWeek(today, dueDate) {
   const weeksPassed = Math.ceil(getDaysPassed(today, dueDate) / 7);

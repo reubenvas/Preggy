@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { WebView } from 'react-native';
-import { Container, View, Text, Spinner } from 'native-base';
+import { Container, Spinner } from 'native-base';
 import MainHeader from './MainHeader';
 
 export default class BlogFrame extends Component {

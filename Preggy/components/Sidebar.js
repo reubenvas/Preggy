@@ -18,7 +18,8 @@ class ListExample extends Component {
     this.props.navigation.dispatch(navigateAction);
   }
 
-  // ONLY IN DEVELOPMENT MODE
+  /* For use in development mode. 
+  Clears AsyncStorage and takes user back to setup stage. */
   deleteAllData = async () => {
     return await AsyncStorage.clear();
   }
@@ -26,7 +27,7 @@ class ListExample extends Component {
   async componentDidMount() {
     const currentWeek = await AsyncStorage.getItem('currentWeek');
     console.log(currentWeek);
-    this.setState( {currentWeek} );
+    this.setState({ currentWeek });
   }
 
   render() {
@@ -35,6 +36,7 @@ class ListExample extends Component {
         <Content style={{ marginTop: 55 }}>
           <List>
             <ListItem>
+              {/* Clears AsyncStorage and takes user back to setup stage. */}
               <Button danger onPress={this.deleteAllData}>
                 <Text>Ta bort Användardata</Text>
               </Button>
@@ -43,7 +45,7 @@ class ListExample extends Component {
               </Button>
             </ListItem>
             <ListItem>
-              <Text onPress={this.props.navigation.closeDrawer } >Min Profil</Text>
+              <Text onPress={this.props.navigation.closeDrawer} >Min Profil</Text>
             </ListItem>
             <ListItem>
               <Text onPress={this.navigateToScreen('WeekInfo')} >Min Graviditet</Text>

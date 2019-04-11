@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import DatePicker from './DatePicker';
 import getDate from '../../handlers/getDateAsString';
-import styles from '../../styles';
 import { Button, Text, Container, View } from 'native-base';
 
 import MainHeader from '../MainHeader';
@@ -10,7 +9,6 @@ import MainHeader from '../MainHeader';
 export default class SetupDueDate extends Component {
   static navigationOptions = {
     header: null,
-    // drawerLockMode: 'locked-closed',
   };
 
   state = {
@@ -21,8 +19,8 @@ export default class SetupDueDate extends Component {
     daysPassed: '',
   }
 
-  minDate = getDate(new Date()); // IDAG
-  maxDate = getDate(new Date(Date.now() + 279 * 86400000)); // IDAG + 280DGR
+  minDate = getDate(new Date());
+  maxDate = getDate(new Date(Date.now() + 279 * 86400000));
 
   setPregDates = (pregnancyInfo) => {
     this.setState({ ...pregnancyInfo })
@@ -39,8 +37,17 @@ export default class SetupDueDate extends Component {
           navigation={navigation}
           menu={false}
         />
-        <Container style={styles.center}>
-          <View style={styles.center}>
+        <Container
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgb(251,246,247)',
+          }}
+        >
+          <View style={{alignItems: 'center'}}>
             <Text
               style={{ marginBottom: 20, fontSize: 20, textAlign: 'center', fontFamily: 'NotoSerifTC-Regular' }}
             >
@@ -53,18 +60,22 @@ export default class SetupDueDate extends Component {
               uri='/api/get_week/due_date/'
             />
             <Text
-              style={styles.smallerText}
+              style={{
+                fontFamily: 'Roboto-Light',
+                fontSize: 14,
+                paddingVertical: 5,
+              }}
               onPress={() => navigation.navigate('SetupPeriod', { name, relation })}
             >
               Hjälp mig att beräkna
           </Text>
             <Button
-              style={styles.topMargin}
+              style={{ marginTop: 20 }}
               bordered block
               onPress={() => {
                 if (this.state.dueDate) {
                   const { dueDate, currentWeek, timePregnant, tagLine, daysPassed } = this.state;
-                  this.props.setPregInfo( {dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })
+                  this.props.setPregInfo({ dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })
                 }
               }
               }

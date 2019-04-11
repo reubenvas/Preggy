@@ -23,7 +23,6 @@ export default class preggyProgress extends Component {
         }
     }
 
-
     render() {
         return (
             <ProgressCircle
@@ -34,8 +33,8 @@ export default class preggyProgress extends Component {
                 shadowColor="rgb(239,234,235)"
                 bgColor="rgb(251,246,247)"
             >
-                <Text style={{ fontSize: 21 }}>{this.props.currentWeek}</Text>
-                <Text style={{ fontSize: 10 }}>({this.props.timePregnant})</Text>
+                <Text style={{ fontSize: 24 }}>{this.props.currentWeek}</Text>
+                <Text style={{ fontSize: 12 }}>({this.props.timePregnant})</Text>
             </ProgressCircle>
         )
     }

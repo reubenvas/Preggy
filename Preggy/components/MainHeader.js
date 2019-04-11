@@ -5,38 +5,34 @@ export default class MainHeader extends Component {
   goBack = this.props.navigation.goBack;
 
   displayMenuBtn = () => {
-    
-  }
-
-  displayMenuBtn = () => {
     if (this.props.back !== false) {
       return (
         <Button transparent onPress={() => this.goBack()}>
-              <Icon name='arrow-back' />
-            </Button>
+          <Icon name='arrow-back' />
+        </Button>
       )
     }
     if (this.props.menu !== false) {
       return (
-        <Button transparent 
+        <Button transparent
           onPress={() => this.props.navigation.openDrawer()}>
-        <Icon name='menu' />
-      </Button>
+          <Icon name='menu' />
+        </Button>
       )
     }
   }
 
   render() {
     return (
-        <Header>
-          <Left>
-            {this.displayMenuBtn()}
-          </Left>
-          <Body>
-            <Title>Preggy</Title>
-          </Body>
-          <Right />
-        </Header>
+      <Header>
+        <Left>
+          {this.displayMenuBtn()}
+        </Left>
+        <Body>
+          <Title>Preggy</Title>
+        </Body>
+        <Right />
+      </Header>
     );
   }
 }

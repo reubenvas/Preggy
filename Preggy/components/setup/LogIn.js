@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Text, Container, View, Input, Item } from 'native-base';
-import styles from '../../styles';
 import MainHeader from '../MainHeader';
 
 export default class LogIn extends Component {
@@ -38,7 +37,7 @@ export default class LogIn extends Component {
               />
             </Item>
             <Button
-              style={styles.topMargin}
+              style={{marginTop: 20}}
               bordered block
               onPress={() => navigation.navigate('EnterName')}>
               <Text>Nästa</Text>

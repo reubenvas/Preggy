@@ -1,39 +1,62 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
-import styles from '../styles';
-import MainHeader from './MainHeader';
+import MainHeader from './MainHeader.js';
 import preggyService from '../services/preggyService';
-import { Container } from 'native-base';
+import { Container, View, Text } from 'native-base';
 
 export default class WeekInfo extends Component {
   static navigationOptions = {
     header: null,
   };
+
   state = {
     title: '',
     content: 'data is loading',
     currentWeek: '',
   }
+
   componentWillMount() {
     this.setState({ currentWeek: this.props.navigation.getParam('currentWeek') });
   }
-  
-  
+
   async componentDidMount() {
-    console.log('logging inside did mount');
-    console.log(this.state);
     const result = await preggyService.getWeek(this.state.currentWeek);
     this.setState({ title: result.title, content: result.content });
   }
 
   render() {
-    console.log(this.state.currentWeek);
     return (
       <Container>
         <MainHeader navigation={this.props.navigation} />
-        <View style={styles.center}>
-          <Text style={styles.heading}>{this.state.title}</Text>
-          <Text style={styles.smallerText} style={styles.weekInfo}>{this.state.content}</Text>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgb(251,246,247)',
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: 'NotoSerifTC-SemiBold',
+              fontSize: 25,
+              marginBottom: 20,
+            }}
+          >
+            {this.state.title}
+          </Text>
+          <Text
+            style={{
+              fontFamily: 'NotoSerifTC-Regular',
+              marginTop: 10,
+              marginRight: 30,
+              marginLeft: 30,
+              textAlign: 'justify'
+            }}
+          >
+            {this.state.content}
+          </Text>
         </View>
       </Container>
     )

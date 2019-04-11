@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import getDate from '../../handlers/getDateAsString';
-import styles from '../../styles';
 import { Button, Text, Container, View } from 'native-base';
 
 import MainHeader from '../MainHeader';
@@ -10,7 +9,6 @@ import DatePicker from './DatePicker';
 export default class SetupPeriod extends Component {
   static navigationOptions = {
     header: null,
-    // drawerLockMode: 'locked-closed',
   };
 
   state = {
@@ -25,21 +23,30 @@ export default class SetupPeriod extends Component {
     this.setState({ ...pregnancyInfo })
   }
 
-  maxDate = getDate(new Date(new Date() - 86400000)); //IGÅR
-  minDate = getDate(new Date(Date.now() - 280 * 86400000)) //IGÅR - 280DGR
+  maxDate = getDate(new Date(new Date() - 86400000));
+  minDate = getDate(new Date(Date.now() - 280 * 86400000))
 
   renderDueDate = () => {
     if (this.state.dueDate) {
       return (
-        <React.Fragment>
-          <Text style={{
-            marginTop: 12,
-            fontFamily: 'Roboto-Light',
-            fontSize: 14,
-            paddingVertical: 5
-          }} >Ditt beräknade förlossningsdatum är </Text>
-          <Text style={styles.smallerText} >{this.state.dueDate}</Text>
-        </React.Fragment >
+        <View>
+          <Text
+            style={{
+              marginTop: 12,
+              fontFamily: 'Roboto-Light',
+              fontSize: 14,
+              textAlign: 'center'
+            }} >Ditt beräknade förlossningsdatum är </Text>
+          <Text
+            style={{
+              fontFamily: 'Roboto-Light',
+              fontSize: 14,
+              textAlign: 'center'
+            }}
+          >
+            {this.state.dueDate}
+          </Text>
+        </View>
       )
     }
   }
@@ -51,15 +58,31 @@ export default class SetupPeriod extends Component {
 
     return (
       <Container>
-        <MainHeader 
-        navigation={navigation}
-        menu={false}
+        <MainHeader
+          navigation={navigation}
+          menu={false}
         />
-        <Container style={styles.center}>
-          <View style={styles.center}>
+        <Container
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgb(251,246,247)',
+          }}
+        >
+          <View style={{alignItems: 'center'}}>
             <Text
-              style={{ marginBottom: 20, fontSize: 20, textAlign: 'center', fontFamily: 'NotoSerifTC-Regular' }}
-            >Första dagen av senaste mensen:</Text>
+              style={{
+                marginBottom: 20,
+                fontSize: 20,
+                textAlign: 'center',
+                fontFamily: 'NotoSerifTC-Regular'
+              }}
+            >
+              Första dagen av senaste mensen:
+            </Text>
             <DatePicker
               minDate={this.minDate}
               maxDate={this.maxDate}
@@ -69,12 +92,12 @@ export default class SetupPeriod extends Component {
             {this.renderDueDate()}
             <Button
               bordered block
-              style={styles.topMargin}
+              style={{ marginTop: 20 }}
               onPress={() => {
                 (this.state);
                 if (this.state.dueDate) {
                   const { dueDate, currentWeek, timePregnant, tagLine, daysPassed } = this.state;
-                  this.props.setPregInfo( {dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })
+                  this.props.setPregInfo({ dueDate, currentWeek, timePregnant, tagLine, daysPassed, name, relation })
                 }
               }
 

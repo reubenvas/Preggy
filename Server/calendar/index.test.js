@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 const assert = require('assert');
 const { calculateDueDate, calculateWeek, calculateAdditionalDays } = require('./index');
-
-
 const defaultDate = new Date('2019-04-03');
 
 describe('testing due date calculator', () => {
