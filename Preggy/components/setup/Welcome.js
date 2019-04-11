@@ -24,7 +24,7 @@ export default class Welcome extends Component {
               fontSize: 25,
               marginBottom: 20,
             }}>
-            Välkommen till Preggy!
+            Välkommen till Baby Journey!
             </Text>
           <Button 
             bordered 
