@@ -3,6 +3,7 @@ import { Button, Text, Container, View, Content, CardItem, Card, Left, Body } fr
 import ProgressCircle from './ProgressCircle';
 import MainHeader from './MainHeader';
 import { BlogCarousel } from './Carousel';
+import { Offers } from './OffersCarousel';
 
 export default class Home extends Component {
 
@@ -108,7 +109,7 @@ export default class Home extends Component {
               Vecka {currentWeek} i Sociala Medier
             </Text>
             <BlogCarousel navigate={navigate} week={currentWeek} />
-            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginTop: 30, marginBottom: 10 }}>Veckans Deal</Text>
+            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginTop: 20, marginBottom: 10 }}>Veckans Deal</Text>
             <Card style={{ width: 280, padding: 20, borderRadius: 10 }}>
               <CardItem style={{ flexDirection: 'column' }}>
                 <Left>
@@ -119,6 +120,10 @@ export default class Home extends Component {
                 </Left>
               </CardItem>
             </Card>
+            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginTop: 20, marginBottom: 10 }}>
+              Erbjudanden
+            </Text>
+            <Offers />
           </View>
         </Content>
       </Container>
