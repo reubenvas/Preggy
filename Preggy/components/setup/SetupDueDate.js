@@ -61,7 +61,6 @@ export default class SetupDueDate extends Component {
             />
             <Text
               style={{
-                fontFamily: 'Roboto-Light',
                 fontSize: 14,
                 paddingVertical: 5,
               }}
