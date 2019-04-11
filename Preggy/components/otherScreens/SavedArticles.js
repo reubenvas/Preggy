@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Container, View, Text, Content } from 'native-base';
 import MainHeader from '../MainHeader';
-import styles from '../../styles';
 
 export default class SavedArticles extends Component {
     render() {
@@ -11,8 +10,14 @@ export default class SavedArticles extends Component {
                     navigation={this.props.navigation}
                 />
                 <Content style={{ backgroundColor: 'rgb(251,246,247)' }}>
-                    <View style={styles.center}>
-                        <Text style={{fontSize: 20, marginTop: 30}}>
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'column',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}>
+                        <Text style={{ fontSize: 20, marginTop: 30 }}>
                             Sparade Artiklar
                         </Text>
                     </View>
