@@ -33,13 +33,11 @@ export default class SetupPeriod extends Component {
           <Text
             style={{
               marginTop: 12,
-              fontFamily: 'Roboto-Light',
               fontSize: 14,
               textAlign: 'center'
             }} >Ditt beräknade förlossningsdatum är </Text>
           <Text
             style={{
-              fontFamily: 'Roboto-Light',
               fontSize: 14,
               textAlign: 'center'
             }}
@@ -72,13 +70,12 @@ export default class SetupPeriod extends Component {
             backgroundColor: 'rgb(251,246,247)',
           }}
         >
-          <View style={{alignItems: 'center'}}>
+          <View style={{ alignItems: 'center' }}>
             <Text
               style={{
                 marginBottom: 20,
                 fontSize: 20,
                 textAlign: 'center',
-                fontFamily: 'NotoSerifTC-Regular'
               }}
             >
               Första dagen av senaste mensen:

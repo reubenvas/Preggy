@@ -12,24 +12,24 @@ export class BlogCarousel extends Component {
     this._carousel = {};
     this.state = {
       blogs:
-      [],
+        [],
     };
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     const bloggArray = await this.fetchBlogInfo();
-    const blogCards = bloggArray.map( blogg => {
+    const blogCards = bloggArray.map(blogg => {
       return this.createBlogCard(blogg);
     });
-    this.setState( {blogs: [...blogCards]} );
+    this.setState({ blogs: [...blogCards] });
   }
-  
+
   fetchBlogInfo = async () => {
     return await preggyService.getBlogpostforWeek(this.props.week);
   }
 
   createBlogCard = (blogData) => {
-    return { title: <BlogCard navigate={this.props.navigate} blogData={blogData} />};
+    return { title: <BlogCard navigate={this.props.navigate} blogData={blogData} /> };
   }
 
   _renderItem = ({ item }) => {

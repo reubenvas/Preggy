@@ -21,7 +21,6 @@ export default class Welcome extends Component {
         <View>
           <Text 
             style={{
-              fontFamily: 'NotoSerifTC-SemiBold',
               fontSize: 25,
               marginBottom: 20,
             }}>

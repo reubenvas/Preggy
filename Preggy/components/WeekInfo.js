@@ -39,7 +39,6 @@ export default class WeekInfo extends Component {
         >
           <Text
             style={{
-              fontFamily: 'NotoSerifTC-SemiBold',
               fontSize: 25,
               marginBottom: 20,
             }}
@@ -48,7 +47,6 @@ export default class WeekInfo extends Component {
           </Text>
           <Text
             style={{
-              fontFamily: 'NotoSerifTC-Regular',
               marginTop: 10,
               marginRight: 30,
               marginLeft: 30,

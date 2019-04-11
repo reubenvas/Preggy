@@ -41,18 +41,6 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSerifTC-Black.otf</string>
-		<string>NotoSerifTC-Bold.otf</string>
-		<string>NotoSerifTC-ExtraLight.otf</string>
-		<string>NotoSerifTC-Light.otf</string>
-		<string>NotoSerifTC-Medium.otf</string>
-		<string>NotoSerifTC-Regular.otf</string>
-		<string>NotoSerifTC-SemiBold.otf</string>
-		<string>Roboto-Bold.ttf</string>
-		<string>Roboto-Light.ttf</string>
-		<string>Roboto-Medium.ttf</string>
-		<string>Roboto-Regular.ttf</string>
-		<string>Roboto-Thin.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
 		<string>EvilIcons.ttf</string>

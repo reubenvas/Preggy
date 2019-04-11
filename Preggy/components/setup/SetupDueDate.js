@@ -49,7 +49,7 @@ export default class SetupDueDate extends Component {
         >
           <View style={{alignItems: 'center'}}>
             <Text
-              style={{ marginBottom: 20, fontSize: 20, textAlign: 'center', fontFamily: 'NotoSerifTC-Regular' }}
+              style={{ marginBottom: 20, fontSize: 20, textAlign: 'center' }}
             >
               Mitt beräknade förlossningsdatum:
           </Text>

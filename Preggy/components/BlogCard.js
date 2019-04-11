@@ -20,7 +20,7 @@ export default class BlogCard extends Component {
             borderRadius: 10
           }}
         >
-          <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 13, textTransform: 'uppercase'}}>
+          <Text style={{ fontSize: 13, textTransform: 'uppercase'}}>
             {blogger}
           </Text>
           <Text note style={{ fontSize: 12 }}>

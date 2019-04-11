@@ -9,9 +9,9 @@ export class Offers extends Component {
         this.state = {
             offers:
                 [
-                    {offer: '20% Barnvagn', brand: 'Bugaboo'},
-                    {offer: '15% Barnsängar', brand: 'Jollyroom'},
-                    {offer: '10% Nappflaskor', brand: 'Philips Avent'},
+                    { offer: '20% Barnvagn', brand: 'Bugaboo' },
+                    { offer: '15% Barnsängar', brand: 'Jollyroom' },
+                    { offer: '10% Nappflaskor', brand: 'Philips Avent' },
                 ],
         };
     }
@@ -19,14 +19,14 @@ export class Offers extends Component {
     _renderItem = ({ item }) => {
         return (
             <Card style={{ width: 280, padding: 20, borderRadius: 10 }}>
-              <CardItem style={{ flexDirection: 'column' }}>
-                <Left>
-                  <Body>
-                    <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 14, textTransform: 'uppercase' }}>{item.offer}</Text>
-                    <Text note style={{ fontFamily: 'Roboto-Light', fontSize: 14, textTransform: 'uppercase' }}>{item.brand}</Text>
-                  </Body>
-                </Left>
-              </CardItem>
+                <CardItem style={{ flexDirection: 'column' }}>
+                    <Left>
+                        <Body>
+                            <Text style={{ fontSize: 14, textTransform: 'uppercase' }}>{item.offer}</Text>
+                            <Text note style={{ fontSize: 14, textTransform: 'uppercase' }}>{item.brand}</Text>
+                        </Body>
+                    </Left>
+                </CardItem>
             </Card>
         );
     }

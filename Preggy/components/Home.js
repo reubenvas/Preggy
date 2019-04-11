@@ -40,7 +40,6 @@ export default class Home extends Component {
           >
             <Text
               style={{
-                fontFamily: 'NotoSerifTC-SemiBold',
                 fontSize: 25,
                 marginTop: 10
               }}
@@ -49,7 +48,6 @@ export default class Home extends Component {
               </Text>
             <Text
               style={{
-                fontFamily: 'Roboto-Light',
                 fontSize: 16,
                 marginTop: 10,
                 marginBottom: 20
@@ -105,22 +103,22 @@ export default class Home extends Component {
                 <Text>Partner</Text>
               </Button>
             </View>
-            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginBottom: 10 }}>
+            <Text style={{ fontSize: 18, marginBottom: 10 }}>
               Vecka {currentWeek} i Sociala Medier
             </Text>
             <BlogCarousel navigate={navigate} week={currentWeek} />
-            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginTop: 20, marginBottom: 10 }}>Veckans Deal</Text>
+            <Text style={{ fontSize: 18, marginTop: 20, marginBottom: 10 }}>Veckans Deal</Text>
             <Card style={{ width: 280, padding: 20, borderRadius: 10 }}>
               <CardItem style={{ flexDirection: 'column' }}>
                 <Left>
                   <Body>
-                    <Text style={{ fontFamily: 'Roboto-Medium', fontSize: 14, textTransform: 'uppercase' }}>Barnförsäkring 25%</Text>
-                    <Text note style={{ fontFamily: 'Roboto-Light', fontSize: 14, textTransform: 'uppercase' }}>Trygghansa</Text>
+                    <Text style={{ fontSize: 14, textTransform: 'uppercase' }}>Barnförsäkring 25%</Text>
+                    <Text note style={{ fontSize: 14, textTransform: 'uppercase' }}>Trygghansa</Text>
                   </Body>
                 </Left>
               </CardItem>
             </Card>
-            <Text style={{ fontFamily: 'NotoSerifTC-Medium', fontSize: 18, marginTop: 20, marginBottom: 10 }}>
+            <Text style={{ fontSize: 18, marginTop: 20, marginBottom: 10 }}>
               Erbjudanden
             </Text>
             <Offers />

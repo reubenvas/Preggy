@@ -34,7 +34,6 @@ export default class EnterName extends Component {
           <View style={{ width: 300 }}>
             <Text
               style={{
-                fontFamily: 'NotoSerifTC-Regular',
                 fontSize: 20,
                 textAlign: 'center',
               }}

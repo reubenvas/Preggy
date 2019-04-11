@@ -24,7 +24,7 @@ export default class LogIn extends Component {
             justifyContent: 'center',
             backgroundColor: 'rgb(251,246,247)',
           }}>
-          <View style={{width: 300}}>
+          <View style={{ width: 300 }}>
             <Item>
               <Input
                 placeholder="Email"
@@ -37,7 +37,7 @@ export default class LogIn extends Component {
               />
             </Item>
             <Button
-              style={{marginTop: 20}}
+              style={{ marginTop: 20 }}
               bordered block
               onPress={() => navigation.navigate('EnterName')}>
               <Text>Nästa</Text>
