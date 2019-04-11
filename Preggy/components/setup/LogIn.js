@@ -12,12 +12,20 @@ export default class LogIn extends Component {
     const { navigation } = this.props;
     return (
       <Container>
-        <MainHeader 
-        navigation={navigation}
-        menu={false}
+        <MainHeader
+          navigation={navigation}
+          menu={false}
         />
-        <Container style={styles.center}>
-          <View style={styles.center} style={styles.card}>
+        <Container
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgb(251,246,247)',
+          }}>
+          <View style={{width: 300}}>
             <Item>
               <Input
                 placeholder="Email"
