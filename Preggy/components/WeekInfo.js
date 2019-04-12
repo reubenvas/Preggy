@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MainHeader from './MainHeader.js';
 import preggyService from '../services/preggyService';
-import { Container, View, Text } from 'native-base';
+import { Container, View, Text, Spinner } from 'native-base';
 
 export default class WeekInfo extends Component {
   static navigationOptions = {
@@ -11,7 +11,7 @@ export default class WeekInfo extends Component {
 
   state = {
     title: '',
-    content: 'data is loading',
+    content: '',
     currentWeek: '',
   }
 
@@ -25,6 +25,27 @@ export default class WeekInfo extends Component {
   }
 
   render() {
+
+    const renderContent = () => {
+      if (!this.state.content) {
+        return (
+          <Spinner color='red' />
+        );
+      } else {
+        return (
+          <Text
+            style={{
+              marginTop: 10,
+              marginRight: 30,
+              marginLeft: 30,
+              textAlign: 'justify'
+            }}
+          >
+            {this.state.content}
+          </Text>
+        )
+      }
+    }
     return (
       <Container>
         <MainHeader navigation={this.props.navigation} />
@@ -46,16 +67,8 @@ export default class WeekInfo extends Component {
           >
             {this.state.title}
           </Text>
-          <Text
-            style={{
-              marginTop: 10,
-              marginRight: 30,
-              marginLeft: 30,
-              textAlign: 'justify'
-            }}
-          >
-            {this.state.content}
-          </Text>
+
+          {renderContent()}
         </View>
       </Container>
     )
