@@ -6,6 +6,7 @@ import { Container, View, Text } from 'native-base';
 export default class WeekInfo extends Component {
   static navigationOptions = {
     header: null,
+    drawerLockMode: 'locked-closed',
   };
 
   state = {
