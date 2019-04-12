@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
-import { Button, Text, Container, View, Content, CardItem, Card, Left, Body } from 'native-base';
+import React, { Component, Image } from 'react';
+import { Button, Text, Container, View, Content, CardItem, Card, Left, Body, Thumbnail } from 'native-base';
 import ProgressCircle from './ProgressCircle';
 import MainHeader from './MainHeader';
 import { BlogCarousel } from './Carousel';
 import { Offers } from './OffersCarousel';
+
+import MotherImage from '../assets/images/mother.png';
+import BabyImage from '../assets/images/baby.png';
+import PartnerImage from '../assets/images/partner.png';
+
 
 export default class Home extends Component {
 
@@ -76,31 +81,31 @@ export default class Home extends Component {
             </View>
             <View style={{ flexDirection: 'row', marginVertical: 30 }}>
 
-              <Button bordered
-                style={{ margin: 5 }}
+              <Button transparent
+                style={{ margin: 20 }}
                 onPress={() => navigate('WeekInfo', {
                   currentWeek,
                 })}
               >
-                <Text>Bebis</Text>
+                <Thumbnail source={BabyImage}/>
               </Button>
 
-              <Button bordered
-                style={{ margin: 5 }}
+              <Button transparent
+                style={{ margin: 20 }}
                 onPress={() => navigate('WeekInfo', {
                   currentWeek,
                 })}
               >
-                <Text>Mamma</Text>
+                <Thumbnail source={MotherImage}/>
               </Button>
 
-              <Button bordered
-                style={{ margin: 5 }}
+              <Button transparent
+                style={{ margin: 20 }}
                 onPress={() => navigate('WeekInfo', {
                   currentWeek,
                 })}
               >
-                <Text>Partner</Text>
+                <Thumbnail source={PartnerImage}/>
               </Button>
             </View>
             <Text style={{ fontSize: 18, marginBottom: 10 }}>
