@@ -13,7 +13,7 @@
   "author": "CodeBlooded",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "mocha": "^6.0.2",
     "mongodb": "^3.2.2",
     "node-fetch": "^2.3.0"
